@@ -31,3 +31,14 @@ Route::get('/about', function() {
 Route::get('user/{id}', function($id) {
 	echo "User id is: " . $id;
 });
+
+/*
+ * Route for login page
+ */
+Route::get('/login', function() {
+	return view('login');
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');

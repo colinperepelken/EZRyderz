@@ -1,3 +1,7 @@
+@extends('layouts.app')
+
+@section('content')
+
 <!DOCTYPE html>
 <html lang="{{ config('app.locale') }}">
     <head>
@@ -8,7 +12,18 @@
         <title>EZRyderz</title>
     </head>
     <body>
+    <div class="container">
+    <header class="row">
+      
+    </header>
+    <div id="main" class="row">
         <h1>Welcome to EZRyderz!</h1>
         <p>Site coming soon!</p>
+    </div>
+    <footer class="row">
+        <!-- TODO: add footer -->
+    </footer>
+    </div>
     </body>
 </html>
+@endsection

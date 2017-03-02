@@ -25,7 +25,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -40,8 +40,8 @@ class LoginController extends Controller
     /**
      * Ability to log in with username (instead of email).
      */
-    public function username() 
-    {
-        return 'username';
-    }
+    // public function username() 
+    // {
+    //     return 'username';
+    // }
 }

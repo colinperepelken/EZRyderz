@@ -72,7 +72,7 @@ return [
 
         'users' => [
             'driver' => 'database',
-            'table' => 'user',
+            'table' => 'users', // <-------- this is the name of the table which the users are stored in!
         ],
     ],
 

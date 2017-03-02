@@ -29,7 +29,10 @@ Route::get('/about', function() {
  * Route for users page
  */
 Route::get('user/{id}', function($id) {
-	echo "User id is: " . $id;
+	$results = DB::select('select * from user');
+	foreach ($results as $u) {
+		echo $u->username;
+	}
 });
 
 /*
@@ -38,6 +41,8 @@ Route::get('user/{id}', function($id) {
 Route::get('/login', function() {
 	return view('login');
 });
+
+
 
 Auth::routes();
 

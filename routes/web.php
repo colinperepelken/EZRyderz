@@ -26,14 +26,9 @@ Route::get('/about', function() {
 });
 
 /*
- * Route for users page
+ * Route for user profiles
  */
-Route::get('user/{id}', function($id) {
-	$results = DB::select('select * from user');
-	foreach ($results as $u) {
-		echo $u->username;
-	}
-});
+Route::get('/profile/{id?}', 'ProfileController@show')->where('id', '[0-9]+'); // id must be integer
 
 /*
  * Route for login page

@@ -17,8 +17,15 @@
       
     </header>
     <div id="main" class="row">
-        <h1>Welcome to EZRyderz!</h1>
-        <p>Site coming soon!</p>
+        <h1>{{ $name }}'s Profile</h1>
+        <form>
+            <p>Bio:</p>
+            <textarea>{{ $bio }}</textarea>
+            <p>Location:</p>
+            <input id="user_profile_location" size="30" value="{{ $location }}" type="text">
+            <br>
+            <input type="submit" value="Update">
+        </form>
     </div>
     <footer class="row">
         <!-- TODO: add footer -->

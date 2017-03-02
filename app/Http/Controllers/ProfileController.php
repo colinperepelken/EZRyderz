@@ -3,24 +3,28 @@
 namespace ezryderz\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth; 
+use Illuminate\Support\Facades\Auth;
+use DB;
 
 class ProfileController extends Controller
 {
 
-    public function show($id = null)
+    public function show($user_id = null)
     {
-    	if(isset($id)) { // check if id is specified
-    		return view('profile', ['id' => $id]);
-    	} else {
-    		if (Auth::Check()) { // check if user is logged in
-				$id = Auth::user()->id;
-				return view('profile', ['id' => $id]); // re direct to profile page with logged in user's id
-			} else {
-				return view('auth.login'); // if user is not logged in, redirect to login page
-			}
-			return view('welcome');
+    	if (Auth::Check()) {
+    		$user_id = Auth::user()->id;
+    	} else if (!isset($user_id)) {
+    		return view('auth.login'); // if user is not logged in, redirect to login page
     	}
-    	
+
+    	// fetch user information from id
+    	$user = DB::table('users')->where('id', $user_id)->first();
+
+    	return view('pages.profile', 
+    		[
+    			'name' => $user->name,
+    			'bio' => $user->bio,
+    			'location' => $user->location
+    		]);
     }
 }

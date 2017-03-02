@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+<head lang = "en">
+  <meta charset = "utf-8">
+  <title>Vehicle Information</title>
+</head>
+<body>
+  <header>
+    <h1>EZRyderz</h1>
+  </header>
+  <form method = "get" action = "http://www.randyconnolly.com/tests/process.php">
+    <fieldset>
+      <legend>Vehicle Information</legend>
+      <p>
+        <label>Make: </label>
+        <select name = "Make">
+          <option value = "toyota">Toyota</option>
+          <option value = "toyota">GM</option>
+          <option value = "toyota">Nissan</option>
+          <option value = "toyota">Honda</option>
+          <option value = "toyota">Hyundai</option>
+          <option value = "toyota">Mercedes</option>
+          <option value = "toyota">BMI</option>
+          <option value = "toyota">Chevrolet</option>
+          <option value = "toyota">Chrystler</option>
+          <option value = "toyota">Dodge</option>
+          <option value = "toyota">Jeep</option>
+        </select>
+      </p>
+      <p>
+        <label>Model: </label>
+        <input type = "text" name = "model" placeholder = "Insert Model Here"/>
+      </p>
+      <p>
+        <label>Year: </label>
+        <input type = "text" name = "year" placeholder = "Insert Year Here"/>
+      </p>
+      <p>
+        <label>Approximate Mileage: </label>
+        <input type = "text" name = "mileage" placeholder = "Insert Mileage Here"/>
+        <select name = "MPGorL/100">
+          <option value = "mpg">MPG</option>
+          <option value = "L/100">L/100</option>
+        </select>
+      </p>
+      <p>
+        <input type = "submit"/>
+        <input type = "reset"/>
+      </p>
+    </fieldset>
+  </form>
+</body>
+</html>

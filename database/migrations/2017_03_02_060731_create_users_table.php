@@ -18,6 +18,8 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password', 60);
+            $table->string('bio', 250)->default('Write a short bio.');
+            $table->string('location')->default('Set your location.');
             $table->rememberToken(); // used for "remember me" option
             $table->timestamps(); //created_at and updated_at
         });

@@ -12,38 +12,26 @@
 */
 
 /*
- * Route for main welcome page
+ * PageController
  */
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'PagesController@welcome'); // welcome page
+
+Route::get('/about', 'PagesController@about'); // about page
+
+Route::get('/login', 'PagesController@login'); // login page
 
 /*
- * Route for about page
+ * Route for schedule
  */
-Route::get('/about', function() {
-	return view('about');
+Route::get('/schedule', function() {
+	return view('schedule');
 });
 
-/*
- * Route for users page
- */
-Route::get('user/{id}', function($id) {
-	$results = DB::select('select * from user');
-	foreach ($results as $u) {
-		echo $u->username;
-	}
-});
-
-/*
- * Route for login page
- */
-Route::get('/login', function() {
-	return view('login');
-});
-
+// Profile Controller
+Route::get('/profile/{user_id?}', 'ProfileController@show')->where('user_id', '[0-9]+'); // id must be integer
 
 
 Auth::routes();
 
+// Home
 Route::get('/home', 'HomeController@index');

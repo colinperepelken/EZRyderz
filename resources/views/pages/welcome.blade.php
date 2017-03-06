@@ -14,10 +14,10 @@
   <body>
     <div class="container">
     <header class="row">
-      <h1>Welcome to EZRyderz! Your simpe carpool solutionnnnnnn!</h1>
+      <h1>Welcome to EZRyderz!</h1>
     </header>
     <div id="main" class="row">
-      <p>Site coming soon!</p>
+      <p>Site coming soon...</p>
     </div>
     <footer class="row">
         <!-- TODO: add footer -->

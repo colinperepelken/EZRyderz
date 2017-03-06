@@ -20,6 +20,10 @@ Route::get('/about', 'PagesController@about'); // about page
 
 Route::get('/login', 'PagesController@login'); // login page
 
+Route::get('/carinformation', 'PagesController@carinformation'); // input car information page
+
+Route::get('/viewschedule', 'PagesController@viewschedule'); // view schedule page
+
 /*
  * Route for schedule
  */

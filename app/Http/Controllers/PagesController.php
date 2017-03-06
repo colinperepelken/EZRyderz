@@ -21,5 +21,13 @@ class PagesController extends Controller
     	return view('auth.login');
     }
 
-    
+    public function carinformation()
+    {
+      return view('pages.carinformation');
+    }
+
+    public function viewschedule()
+    {
+      return view('pages.viewschedule');
+    }
 }

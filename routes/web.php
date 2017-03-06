@@ -24,7 +24,7 @@ Route::get('/login', 'PagesController@login'); // login page
  * Route for schedule
  */
 Route::get('/schedule', function() {
-	return view('schedule');
+	return view('pages.schedule');
 });
 
 // Profile Controller

@@ -11,14 +11,15 @@ form {
 	margin-bottom:2em;
 }
 
-.schedule_form_address {
+/*The following is css for the schedule page*/
+.schedule-form-address {
 	border-bottom-style: solid;
 	border-bottom-width: thin;
 	border-bottom-color: #e6e6e6;
  	padding-bottom: 2em;
 }
 
-.schedule_form_address input {
+.schedule-form-address input {
 	width: 98%;
 	border: thin solid #d9d9d9;
 	border-radius: 3px;
@@ -26,19 +27,19 @@ form {
 	
 }
 
-.schedule_form_time {
+.schedule-form-time {
 	border-bottom-style: solid;
 	border-bottom-width: thin;
 	border-bottom-color: #e6e6e6;
  	padding-bottom: 2em;
 }
 
-.schedule_form_time input {
+.schedule-form-time input {
 	padding-left:0.2em;
 	margin-left: 2em;
 }
 
-.schedule_form_driver {
+.schedule-form-driver {
     border-bottom-style: solid;
 	border-bottom-width: thin;
 	border-bottom-color: #e6e6e6;
@@ -46,22 +47,22 @@ form {
  	padding-bottom: 2em;
 }
 
-.schedule_form_driver input {
+.schedule-form-driver input {
 	margin-left:1em;
 }
 
-.schedule_form_days {
+.schedule-form-days {
 	text-align: center;
 	word-spacing: 2em;
 }
 
-.schedule_form_buttons{
+.schedule-form-buttons{
 	margin-top:1em;
 	margin-left:15em;
 	margin-right:15em;
 }
 
-.schedule_form_buttons input[type="submit"] {
+.schedule-form-buttons input[type="submit"] {
 	float:right;
 }
 
@@ -91,4 +92,78 @@ fieldset p {
 
 div input {
 	margin:0.5em;
+}
+
+
+/*The following is css for the welcome page*/
+#welcome-masthead {
+	height: 6em;
+
+	margin-top: 2em;
+	margin-bottom: 2em;
+	margin-left: 5em;
+	margin-right: 5em; 
+	padding-top: 0.1px;
+
+	white-space: nowrap;
+	text-align: center;
+
+	background-color: #e8eaed;
+}
+
+#welcome-left-section {
+	float: left;
+
+	padding-top:;
+	padding-left: 0.8em;
+	padding-right:0.8em;
+	margin-right: 2em;
+	margin-left: 2em;
+	
+	height: 1000px;
+	width: 10%;
+
+	background-color: #e8eaed;
+	border: thin,solid,#000000;
+}
+
+#welcome-center-section {
+	padding-left: 0.8em;
+	padding-right:0.8em;
+
+	height: 1000px;
+	width: 61%;
+
+	display: inline-block;
+
+	background-color: #e8eaed;
+	border: thin,solid,#000000;
+}
+
+#welcome-right-section {
+	float: right;
+
+	padding-left: 0.8em;
+	padding-right:0.8em;
+	margin-right:2em;
+
+	height: 1000px;
+	width: 20%;
+
+	background-color: #e8eaed;
+	border:thin,solid,#000000;
+}	
+
+#welcome-bottom {
+	width:95.5%;
+	height: 5em;
+
+	padding-left: 0.8em;
+	padding-right:0.8em;
+	margin: 2em;
+	
+	background-color: #e8eaed;
+	border:thin,solid,#000000;
+	background-color: #e8eaed;
+	border:thin,solid,#000000;
 }

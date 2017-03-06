@@ -19,7 +19,7 @@
       <fieldset>
         <legend>Schedule Information</legend>
 
-        <div class="schedule_form_address">
+        <div class="schedule-form-address">
           <strong>Starting Address:</strong> 
           <input type="text" name="startAddress" placeholder="Please enter your starting address. (Ex: Your house)"> <br>
           <strong>Destination Address:</strong> 
@@ -28,7 +28,7 @@
 
         <br>
 		  
-        <div class="schedule_form_time">
+        <div class="schedule-form-time">
           <strong>Departure Time:</strong> 
           <input type="time" name="depTime"> <br>
           <strong>End of your day:</strong> 
@@ -36,7 +36,7 @@
         </div>
 
         <!-- This will be used to test if the user is a driver or not -->
-        <div class="schedule_form_driver">
+        <div class="schedule-form-driver">
           <?php 
             if ($user=="driver") {
               echo "<strong>Driving availability: </strong> 
@@ -47,7 +47,7 @@
 
         <p> Select all days that this information applies to. </p>
 
-        <div class="schedule_form_days">
+        <div class="schedule-form-days">
           <input type="checkbox" name="monday" value="monday">Monday
           <input type="checkbox" name="tuesday" value="tuesday">Tuesday
           <input type="checkbox" name="wednesday" value="wednesday">Wednesday
@@ -57,7 +57,7 @@
           <input type="checkbox" name="sunday" value="sunday">Sunday <br>
         </div>
 		  
-        <div class="schedule_form_buttons">
+        <div class="schedule-form-buttons">
           <input type ="Reset" value="Clear"> <input type="submit" value="Submit"> 
         </div>
 

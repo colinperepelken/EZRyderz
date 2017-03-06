@@ -18,11 +18,11 @@
     </header>
     <div id="main" class="row">
         <h1>{{ $name }}'s Profile</h1>
-        <form>
+        <form method="GET" action="{{ route('profile') }}">
             <p>Bio:</p>
-            <textarea>{{ $bio }}</textarea>
+            <textarea name="bio">{{ $bio }}</textarea>
             <p>Location:</p>
-            <input id="user_profile_location" size="30" value="{{ $location }}" type="text">
+            <input id="user_profile_location" size="30" value="{{ $location }}" type="text" name="location">
             <br>
             <input type="submit" value="Update">
         </form>

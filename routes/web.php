@@ -28,7 +28,7 @@ Route::get('/schedule', function() {
 });
 
 // Profile Controller
-Route::get('/profile/{user_id?}', 'ProfileController@show')->where('user_id', '[0-9]+'); // id must be integer
+Route::get('/profile/{user_id?}', array('as' => 'profile', 'uses' => 'ProfileController@show'))->where('user_id', '[0-9]+'); // id must be integer
 
 
 Auth::routes();

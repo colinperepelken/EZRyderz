@@ -9,7 +9,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="../css/all.css" type="text/css"/>
-        <title>EZRyderz</title>
+        <title>Your Profile</title>
     </head>
     <body>
     <div class="container">
@@ -37,7 +37,7 @@
                     Update Profile Picture:<input type="file" name="avatar">
                     <br>
                     <p>Bio:</p>
-                    <textarea rows="5" cols="40" name="bio" form="profile_form">{{ $bio }}</textarea>
+                    <textarea rows="5" cols="40" name="bio" form="profile-form">{{ $bio }}</textarea>
                     <p>Location:</p>
                     <input id="user_profile_location" size="30" value="{{ $location }}" type="text" name="location">
                     <input type="hidden" name="user_id" value="{{ $user_id }}">

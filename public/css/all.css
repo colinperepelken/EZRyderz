@@ -67,7 +67,7 @@ form {
 }
 
 
-input[type="submit"], input[type="reset"]{
+/*input[type="submit"], input[type="reset"]{
 	align-items: flex-start;
     text-align: center;
     border-width: 2px;
@@ -80,7 +80,7 @@ input[type="submit"], input[type="reset"]{
 
 input[type=submit]:hover, input[type="reset"]:hover {
     background-color: #d9d9d9;
-}
+}*/
 
 
 
@@ -168,6 +168,8 @@ div input {
 	border:thin,solid,#000000;
 }
 
+
+/* PROFILE PAGE */
 #profile-image {
 	float: left;
 

@@ -5,64 +5,123 @@
 @section('content')
 <!DOCTYPE html>
 <html lang="{{ config('app.locale') }}">
-    <head>
-      <meta charset="utf-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link rel="stylesheet" href="<?php echo asset('css/all.css')?>" type="text/css"> 
-    </head>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="<?php echo asset('css/all.css')?>" type="text/css"> 
+  </head>
 
-    <body>
-      <!The php below should switch between Driver and Carpooler depending on the user.>
-      
-      <form method="post" action="/action_page.php">
-        <fieldset>
-          <legend>Schedule Information</legend>
+  <body>
+    @if (!isset($status)) <!-- displays a form asking if the user is a rider or a driver if that is not set -->
+      <form method="get" action="{{ route('schedule') }}">
+        <legend>What are you doing?</legend>
+        <input type="radio" name="status" value="driver"> I'm offering a ride<br>
+        <input type="radio" name="status" value="rider"> I'm looking for a ride<br>
+        <input type="submit" value="Next">
+      </form>
+    @else <!-- else if the status IS set -->
+      @if ($status === "driver") <!-- if the user is a driver -->
+        <form method="post" action="{{ route('schedule') }}">
+          {{ csrf_field() }} <!-- this is needed to post form, do not delete -->
+          <input type="hidden" name="status" value="{{ $status }}"> <!-- controller needs to know the status -->
+          
 
-          <div class="schedule_form_address">
-            <strong>Starting Address:</strong> 
-            <input type="text" name="startAddress" placeholder="Please enter your starting address. (Ex: Your house)"> <br>
-            <strong>Destination Address:</strong> 
-            <input type="text" name="destAddress" placeholder="Please enter your destination address. (Ex: Your school)"> <br>
-          </div>
+          <!--Driver Form-->
+          <fieldset>
+            <legend>Driver Scheduling Form</legend>
 
-          <br>
+            <div class="schedule-form-address">
+              <strong>Starting Address:</strong> 
+              <input type="text" name="startAddress" placeholder="Please enter your starting address. (Ex: Your house)"> <br>
+              <strong>Destination Address:</strong> 
+              <input type="text" name="destAddress" placeholder="Please enter your destination address. (Ex: Your school)"> <br>
+            </div>
 
-          <div class="schedule_form_time">
-            <strong>Departure Time:</strong> 
-            <input type="time" name="depTime"> <br>
-            <strong>End of your day:</strong> 
-            <input type="time" name="endTime"> <br>
-          </div>
+            <br>
+    		  
+            <div class="schedule-form-time">
+              <strong>Arrival Time: </strong> 
+              <input id="dep" type="time" name="depTime"> <br>
+              <strong>End of your day:</strong> 
+              <input type="time" name="endTime"> <br>
+            </div>
 
-          <! This will be used to test if the user is a driver or not >
-          <div class="schedule_form_driver">
-            <?php 
-              if ($user=="driver") {
-              echo "<strong>Driving availability: </strong> 
-                    <input type=\"checkbox\" name=\"toDest\" value=\"toDest\">To Destination
-                    <input type=\"checkbox\" name=\"fromDest\" value=\"fromDest\">From Destination<br>";
-            }?>
-          </div>
+            <!-- This will be used to test if the user is a driver or not -->
+            <div class="schedule-form-driver">
+                  <strong>Driving Availability: </strong> 
+                  <input type="checkbox" name="toDest" value="toDest">  To Destination
+                  <input type="checkbox" name="fromDest" value="fromDest">  From Destination<br>
+                  <strong>Max Deviation*: </strong>
+                  <!--Can use php to ensure a proper entry (type int, numbers only)-->
+                  <input id="schedule-deviation" type="text" name="maxDeviation" placeholder="Input Distance"><br>
+                  <p>*How far away from your direct route are you willing to travel? Provide an integer with meters as the unit.</p> 
+            </div>
 
-          <p> Select all days that this information applies to. </p>
+            <p> Select all days that this information applies to. </p>
 
-          <div class="schedule_form_days">
-            <input type="checkbox" name="monday" value="monday">Monday
-            <input type="checkbox" name="tuesday" value="tuesday">Tuesday
-            <input type="checkbox" name="wednesday" value="wednesday">Wednesday
-            <input type="checkbox" name="thursday" value="thursday">Thursday
-            <input type="checkbox" name="friday" value="friday">Friday
-            <input type="checkbox" name="saturday" value="saturday">Saturday
-            <input type="checkbox" name="sunday" value="sunday">Sunday <br>
-          </div>
+            <div class="schedule-form-days">
+              <input type="checkbox" name="monday" value="monday">Monday
+              <input type="checkbox" name="tuesday" value="tuesday">Tuesday
+              <input type="checkbox" name="wednesday" value="wednesday">Wednesday
+              <input type="checkbox" name="thursday" value="thursday">Thursday
+              <input type="checkbox" name="friday" value="friday">Friday
+              <input type="checkbox" name="saturday" value="saturday">Saturday
+              <input type="checkbox" name="sunday" value="sunday">Sunday <br>
+            </div>
+    		  
+            <div class="schedule-form-buttons">
+              <input type ="Reset" value="Clear"> <input type="submit" value="Submit"> 
+            </div>
 
-          <div class="schedule_form_buttons">
-            <input type ="Reset" value="Clear"> <input type="submit" value="Submit"> 
-          </div>
+          </fieldset>
+        </form> 
 
-        </fieldset>
-      </form> 
-    </body>
+
+         <!--Rider Form-->
+        @elseif ($status === "rider") <!-- if the user is a rider -->
+          <form method="post" action="{{ route('schedule') }}">
+            {{ csrf_field() }} <!-- this is needed to post form, do not delete -->
+            <input type="hidden" name="status" value="{{ $status }}"> <!-- controller needs to know the status -->
+            <fieldset>
+              <legend>Rider Scheduling Form</legend>
+
+              <div class="schedule-form-address">
+                <strong>Starting Address:</strong> 
+                <input type="text" name="startAddress" placeholder="Please enter your starting address. (Ex: Your house)"> <br>
+                <strong>Destination Address:</strong> 
+                <input type="text" name="destAddress" placeholder="Please enter your destination address. (Ex: Your school)"> <br>
+              </div>
+
+              <br>
+            
+              <div class="schedule-form-time">
+               <strong>Arrival Time: </strong> 
+               <input id="dep" type="time" name="depTime"> <br>
+               <strong>End of your day:</strong> 
+               <input type="time" name="endTime"> <br>
+              </div>
+
+              <p> Select all days that this information applies to. </p>
+
+              <div class="schedule-form-days">
+                <input type="checkbox" name="monday" value="monday">Monday
+                <input type="checkbox" name="tuesday" value="tuesday">Tuesday
+                <input type="checkbox" name="wednesday" value="wednesday">Wednesday
+                <input type="checkbox" name="thursday" value="thursday">Thursday
+                <input type="checkbox" name="friday" value="friday">Friday
+                <input type="checkbox" name="saturday" value="saturday">Saturday
+                <input type="checkbox" name="sunday" value="sunday">Sunday <br>
+              </div>
+            
+              <div class="schedule-form-buttons">
+                <input type ="Reset" value="Clear"> <input type="submit" value="Submit"> 
+              </div>
+
+            </fieldset>
+        </form> 
+        @endif
+    @endif
+  </body>
 </html>
 @endsection

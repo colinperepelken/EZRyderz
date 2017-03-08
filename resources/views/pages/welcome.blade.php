@@ -3,27 +3,48 @@
 @section('content')
 
 <!DOCTYPE html>
-<html lang="{{ config('app.locale') }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<html>
+<head lang="{{ config('app.locale') }}">
+  <title>Test Title</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../css/all.css" type="text/css"/>
+</head>
+<body>
 
-        <title>EZRyderz</title>
-    </head>
-    <body>
-    <div class="container">
-    <header class="row">
-      
-    </header>
-    <div id="main" class="row">
-        <h1>Welcome to EZRyderz!</h1>
-        <p>Site coming soon!</p>
-    </div>
-    <footer class="row">
-        <!-- TODO: add footer -->
-    </footer>
-    </div>
-    </body>
-</html>
+<!--Top masthead of the website-->
+<header id="welcome-masthead">
+  <h1> Sexy Website Header </h1>
+</header>
+
+<!--Left portion of the website m-->
+<article id="welcome-left-section">
+  <nav>
+    <a href="#welcome-masthead">- To Top</a> <br>
+    <br>
+    <a href="#welcome-bottom">- To Bottom</a> <br>
+  </nav>
+</article>
+
+<!--Center portion of the website -->
+<article id="welcome-center-section">
+  <div>
+    <p> Some text in the center section </p>
+  </div>
+</article>
+
+<!--Right portion of the website-->
+<article id="welcome-right-section">
+  <div>
+    <p> Some text in the right section </p>
+  </div>
+</article>
+
+<footer id="welcome-bottom">
+  <div>
+    <p> This is the footer </p>
+  </div>
+</footer>
+
 @endsection

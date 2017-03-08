@@ -8,8 +8,8 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>EZRyderz</title>
+        <link rel="stylesheet" href="../css/all.css" type="text/css"/>
+        <title>Your Profile</title>
     </head>
     <body>
     <div class="container">
@@ -18,14 +18,34 @@
     </header>
     <div id="main" class="row">
         <h1>{{ $name }}'s Profile</h1>
-        <form>
-            <p>Bio:</p>
-            <textarea>{{ $bio }}</textarea>
-            <p>Location:</p>
-            <input id="user_profile_location" size="30" value="{{ $location }}" type="text">
-            <br>
-            <input type="submit" value="Update">
-        </form>
+        <div id="profile-image">
+            <img src="/uploads/avatars/{{ $avatar }}">
+        </div>
+        <div id="profile-content">
+            @if (Auth::guest()) <!-- if user is not logged in -->
+                <p>Bio:</p>
+                <textarea name="bio" readonly>{{ $bio }}</textarea>
+                <p>Location: {{ $location }}</p>
+            @else
+                @if ($updated)
+                    <div id="update success" style="background-color: #66ff66; width: 135px;"> <!-- TODO: make this look nicer... also shouldn't be inline CSS, put in the sheet -->
+                        <p>Update Successful!</p>
+                    </div>
+                @endif
+                <form id="profile-form" enctype="multipart/form-data" class="form-horizontal" role="form" method="POST" action="{{ route('profile') }}">
+                                {{ csrf_field() }} <!-- this is needed to post form, do not delete -->
+                    Update Profile Picture:<input type="file" name="avatar">
+                    <br>
+                    <p>Bio:</p>
+                    <textarea rows="5" cols="40" name="bio" form="profile-form">{{ $bio }}</textarea>
+                    <p>Location:</p>
+                    <input id="user_profile_location" size="30" value="{{ $location }}" type="text" name="location">
+                    <input type="hidden" name="user_id" value="{{ $user_id }}">
+                    <br>
+                    <input type="submit" value="Update" class="btn btn-primary">
+                </form>
+            @endif
+        </div>
     </div>
     <footer class="row">
         <!-- TODO: add footer -->

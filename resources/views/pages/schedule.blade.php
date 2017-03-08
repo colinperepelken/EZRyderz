@@ -38,7 +38,7 @@
         <!-- This will be used to test if the user is a driver or not -->
         <div class="schedule-form-driver">
           <?php 
-            if ($user=="driver") {
+            if ($user==="driver") {
               echo "<strong>Driving availability: </strong> 
                     <input type=\"checkbox\" name=\"toDest\" value=\"toDest\">To Destination
                     <input type=\"checkbox\" name=\"fromDest\" value=\"fromDest\">From Destination<br>";

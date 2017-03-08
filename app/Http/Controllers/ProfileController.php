@@ -5,6 +5,7 @@ namespace ezryderz\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use DB;
+use Image; // for the profile image
 
 class ProfileController extends Controller
 {
@@ -26,6 +27,7 @@ class ProfileController extends Controller
     			'bio' => $user->bio,
     			'location' => $user->location,
                 'user_id' => $user_id,
+                'avatar' => $user->avatar,
                 'updated' => false // account was not just updated
     		]);
     }
@@ -34,7 +36,7 @@ class ProfileController extends Controller
     {
         if (Auth::Check()) { // if the user is logged in
 
-           // $input = Request::all('user_id', 'location', 'bio');
+
 
             $user_id = $request->input('user_id');
             $bio = $request->input('bio');
@@ -43,8 +45,17 @@ class ProfileController extends Controller
             // fetch user information from id
             $user = DB::table('users')->where('id', $user_id)->first();
 
+            // handle the user upload of avatar
+            if ($request->hasFile('avatar')) {
+                $avatar = $request->file('avatar');
+                $filename = time() . '.' . $avatar->getClientOriginalExtension();
+                Image::make($avatar)->resize(300, 300)->save(public_path('/uploads/avatars/' . $filename));
+            } else {
+                $filename = 'default.jpg';
+            }
+
             // update database info
-            DB::table('users')->where('id', $user_id)->update(['bio' => $bio, 'location' => $location]);
+            DB::table('users')->where('id', $user_id)->update(['bio' => $bio, 'location' => $location, 'avatar' => $filename]);
 
             return view('pages.profile',
                 [
@@ -52,6 +63,7 @@ class ProfileController extends Controller
                     'bio' => $bio,
                     'location' => $location,
                     'user_id' => $user_id,
+                    'avatar' => $filename,
                     'updated' => true // set to true so view can tell information was just updated
                 ]);
         }

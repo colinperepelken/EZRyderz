@@ -18,6 +18,7 @@
     </header>
     <div id="main" class="row">
         <h1>{{ $name }}'s Profile</h1>
+        <img src="/uploads/avatars/{{ $avatar }}">
         @if (Auth::guest()) <!-- if user is not logged in -->
             <p>Bio:</p>
             <textarea name="bio" readonly>{{ $bio }}</textarea>
@@ -28,13 +29,15 @@
                     <p>Update Successful!</p>
                 </div>
             @endif
-            <form id="profile_form" class="form-horizontal" role="form" method="POST" action="{{ route('profile') }}">
+            <form id="profile_form" enctype="multipart/form-data" class="form-horizontal" role="form" method="POST" action="{{ route('profile') }}">
                             {{ csrf_field() }} <!-- this is needed to post form, do not delete -->
                 <p>Bio:</p>
                 <textarea rows="5" cols="40" name="bio" form="profile_form">{{ $bio }}</textarea>
                 <p>Location:</p>
                 <input id="user_profile_location" size="30" value="{{ $location }}" type="text" name="location">
                 <input type="hidden" name="user_id" value="{{ $user_id }}">
+                <br>
+                <input type="file" name="avatar">
                 <br>
                 <input type="submit" value="Update">
             </form>

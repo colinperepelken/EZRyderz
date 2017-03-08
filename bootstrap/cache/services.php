@@ -28,6 +28,7 @@
     24 => 'ezryderz\\Providers\\AuthServiceProvider',
     25 => 'ezryderz\\Providers\\EventServiceProvider',
     26 => 'ezryderz\\Providers\\RouteServiceProvider',
+    27 => 'Intervention\\Image\\ImageServiceProvider',
   ),
   'eager' => 
   array (
@@ -45,6 +46,7 @@
     11 => 'ezryderz\\Providers\\AuthServiceProvider',
     12 => 'ezryderz\\Providers\\EventServiceProvider',
     13 => 'ezryderz\\Providers\\RouteServiceProvider',
+    14 => 'Intervention\\Image\\ImageServiceProvider',
   ),
   'deferred' => 
   array (

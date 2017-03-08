@@ -167,3 +167,34 @@ div input {
 	background-color: #e8eaed;
 	border:thin,solid,#000000;
 }
+
+#profile-image {
+	float: left;
+
+	padding-right:0.8em;
+	margin-right: 2em;
+	margin-left: 2em;
+	
+	height: 1000px;
+	width: 300px;
+
+	/*background-color: #e8eaed;*/
+	/*border: thin,solid,#000000*/;
+}
+
+#profile-content {
+	padding-left: 0.8em;
+	padding-right:0.8em;
+
+	height: 1000px;
+	width: 40%;
+
+	display: inline-block;
+
+}
+
+#profile-form {
+	margin-left: 0;
+	margin-right: 0;
+	width: 100%;
+}

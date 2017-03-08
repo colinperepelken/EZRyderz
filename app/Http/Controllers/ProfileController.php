@@ -51,7 +51,7 @@ class ProfileController extends Controller
                 $filename = time() . '.' . $avatar->getClientOriginalExtension();
                 Image::make($avatar)->resize(300, 300)->save(public_path('/uploads/avatars/' . $filename));
             } else {
-                $filename = 'default.jpg';
+                $filename = $user->avatar; // use the current filename
             }
 
             // update database info

@@ -24,12 +24,9 @@ Route::get('/carinformation', 'PagesController@carinformation'); // input car in
 
 Route::get('/viewschedule', 'PagesController@viewschedule'); // view schedule page
 
-/*
- * Route for schedule
- */
-Route::get('/schedule', function() {
-	return view('pages.schedule');
-});
+// Schedule Controller
+Route::get('/schedule/{status?}', array('as' => 'schedule', 'uses' => 'ScheduleController@show'));
+Route::post('/schedule', ['as' => 'schedule', 'uses' => 'ScheduleController@submit']);
 
 // Profile Controller
 Route::get('/profile/{user_id?}', array('as' => 'profile', 'uses' => 'ProfileController@show'))->where('user_id', '[0-9]+'); // id must be integer

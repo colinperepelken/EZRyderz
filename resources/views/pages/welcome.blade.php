@@ -21,8 +21,9 @@
 <!--Left portion of the website m-->
 <article id="welcome-left-section">
   <nav>
-    <a href="#welcome-masthead">- Top of the Page</a> <br>
-    <a href="#welcome-bottom">- Bottom of the Page</a> <br>
+    <a href="#welcome-masthead">- To Top</a> <br>
+    <br>
+    <a href="#welcome-bottom">- To Bottom</a> <br>
   </nav>
 </article>
 

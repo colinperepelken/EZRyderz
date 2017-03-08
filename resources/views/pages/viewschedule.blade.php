@@ -4,9 +4,9 @@
 
 @section('content')
 
-<! Since both the driver schedule and the carpooler schedule are very similar, I put them together into one
+<!-- Since both the driver schedule and the carpooler schedule are very similar, I put them together into one
 file with a condition that checks if the user is a driver. I can seperate this file into 2 files if that's
-better though>
+better though-->
 
 <head lang = "en">
   <meta charset = "utf-8">
@@ -20,15 +20,15 @@ better though>
     <div class="col-md-8 col-md-offset-2">
       <div class="panel panel-default">
         <div class="panel-heading">Sample Name's Schedule
-          <! Profile image would be here>
+          <!-- Profile image would be here-->
         <img src="" alt =""/>
         </div>
         <div class="panel-body">
           <div class="col-md-6">
-          <! Still need input from the database>
+          <!-- Still need input from the database-->
             <p>Starting Address:</p>
             <p>Destination Address:</p>
-            <! If the user is a driver, show how far off they are willing to deviate from their route>
+            <!-- If the user is a driver, show how far off they are willing to deviate from their route-->
             <?php
               if ($user=="driver") {
               echo "<p>Maximum Deviation Off Route:"."</p>";

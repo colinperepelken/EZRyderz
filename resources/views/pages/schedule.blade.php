@@ -25,8 +25,11 @@
         <form method="post" action="{{ route('schedule') }}">
           {{ csrf_field() }} <!-- this is needed to post form, do not delete -->
           <input type="hidden" name="status" value="{{ $status }}"> <!-- controller needs to know the status -->
+          
+
+          <!--Driver Form-->
           <fieldset>
-            <legend>Driving Schedule Information</legend>
+            <legend>Driver Scheduling Form</legend>
 
             <div class="schedule-form-address">
               <strong>Starting Address:</strong> 
@@ -39,18 +42,20 @@
     		  
             <div class="schedule-form-time">
               <strong>Arrival Time: </strong> 
-              <input type="time" name="depTime"> <br>
-             <strong>End of your day:</strong> 
+              <input id="dep" type="time" name="depTime"> <br>
+              <strong>End of your day:</strong> 
               <input type="time" name="endTime"> <br>
             </div>
 
             <!-- This will be used to test if the user is a driver or not -->
             <div class="schedule-form-driver">
                   <strong>Driving Availability: </strong> 
-                  <input type="checkbox" name="toDest" value="toDest">To Destination
-                  <input type="checkbox" name="fromDest" value="fromDest">From Destination<br>
-                  <strong>Max Deviation: </strong>
-                  <input type="text" name="maxDeviation" placeholder="How far are you willing to deviate from your original route?"><br>
+                  <input type="checkbox" name="toDest" value="toDest">  To Destination
+                  <input type="checkbox" name="fromDest" value="fromDest">  From Destination<br>
+                  <strong>Max Deviation*: </strong>
+                  <!--Can use php to ensure a proper entry (type int, numbers only)-->
+                  <input id="schedule-deviation" type="text" name="maxDeviation" placeholder="Input Distance"><br>
+                  <p>*How far away from your direct route are you willing to travel? Provide an integer with meters as the unit.</p> 
             </div>
 
             <p> Select all days that this information applies to. </p>
@@ -66,17 +71,20 @@
             </div>
     		  
             <div class="schedule-form-buttons">
-              <input type ="Reset" value="Clear"> <input type="submit" value="Submit Ride Offer"> 
+              <input type ="Reset" value="Clear"> <input type="submit" value="Submit"> 
             </div>
 
           </fieldset>
         </form> 
+
+
+         <!--Rider Form-->
         @elseif ($status === "rider") <!-- if the user is a rider -->
           <form method="post" action="{{ route('schedule') }}">
             {{ csrf_field() }} <!-- this is needed to post form, do not delete -->
             <input type="hidden" name="status" value="{{ $status }}"> <!-- controller needs to know the status -->
             <fieldset>
-              <legend>Riding Schedule Information</legend>
+              <legend>Rider Scheduling Form</legend>
 
               <div class="schedule-form-address">
                 <strong>Starting Address:</strong> 
@@ -88,10 +96,10 @@
               <br>
             
               <div class="schedule-form-time">
-                <strong>When do you need to arrive?:</strong> 
-                <input type="time" name="depTime"> <br>
-            <!--    <strong>End of your day:</strong> 
-                <input type="time" name="endTime"> <br>    do we want this option? removed by Colin  -->
+               <strong>Arrival Time: </strong> 
+               <input id="dep" type="time" name="depTime"> <br>
+               <strong>End of your day:</strong> 
+               <input type="time" name="endTime"> <br>
               </div>
 
               <p> Select all days that this information applies to. </p>
@@ -107,7 +115,7 @@
               </div>
             
               <div class="schedule-form-buttons">
-                <input type ="Reset" value="Clear"> <input type="submit" value="Submit Ride Request"> 
+                <input type ="Reset" value="Clear"> <input type="submit" value="Submit"> 
               </div>
 
             </fieldset>

@@ -15,7 +15,8 @@ class CreateCarInformationTable extends Migration
     public function up()
     {
         Schema::create('carinformation', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id'); //Primary key
+            $table->integer('userId')->unique(); //CarInformation(userId) is a foreign key to Users(id);
             $table->string('make');
             $table->string('model');
             $table->integer('year');

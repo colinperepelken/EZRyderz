@@ -15,11 +15,11 @@
       <div class="panel panel-default">
         <div class="panel-heading">Car Information</div>
         <div class="panel-body">
-          <form method = "POST" class="form-horizontal" action = "/action_page.php">
-
+          <form method = "POST" class="form-horizontal" action = "insertcarinformation">
                 <div class="form-group">
                   <label class="col-md-4 control-label">Make: </label>
                   <div class="col-md-6">
+                    <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <select class="form-control" name = "make">
                       <option value = "toyota">Toyota</option>
                       <option value = "gm">GM</option>
@@ -35,32 +35,28 @@
                     </select>
                   </div>
                 </div>
-
                 <div class="form-group">
                   <label class="col-md-4 control-label">Model: </label>
                   <div class="col-md-6">
                     <input class="form-control" type = "text" name = "model" placeholder = "Insert Model Here"/>
                   </div>
                 </div>
-
                 <div class="form-group">
                   <label class="col-md-4 control-label">Year: </label>
                   <div class="col-md-6">
                     <input class="form-control" type = "text" name = "year" placeholder = "Insert Year Here"/>
                   </div>
                 </div>
-
                 <div class="form-group">
                   <label class="col-md-4 control-label">License Plate: </label>
                   <div class="col-md-6">
                     <input class="form-control" type = "text" name = "licensePlate" placeholder = "Insert License Plate Here"/>
                   </div>
                 </div>
-
                 <div class="form-group">
                   <label class="col-md-4 control-label">Number of Seats: </label>
                   <div class="col-md-6">
-                    <select class="form-control" name = "seats">
+                    <select class="form-control" name = "numberOfSeats">
                       <option value = "2">2</option>
                       <option value = "3">3</option>
                       <option value = "4">4</option>
@@ -73,39 +69,35 @@
                     </select>
                   </div>
                 </div>
-
                 <div class="form-group">
                   <label class="col-md-4 control-label">Air Conditioning? </label>
                   <div class="col-md-6">
                     <div class="">
-                    <input type = "radio" name = "yesOrNo" value = "yes">Yes
-                    <input type = "radio" name = "yesOrNo" value = "no">No
+                    <input type = "radio" name = "hasAirConditioning" value = "yes">Yes
+                    <input type = "radio" name = "hasAirConditioning" value = "no">No
                   </div>
                 </div>
               </div>
-
                 <div class="form-group">
-                  <label class="col-md-4 control-label">Approximate Mileage: </label>
+                  <label class="col-md-4 control-label">Fuel Efficiency: </label>
                   <div class="col-md-6">
-                  <input class="form-control" type = "text" name = "mileage" placeholder = "Insert Mileage Here"/>
-                  <! Minor CSS bug. The MPG L/100 option is on it's own line and not next to "Approximate Mileage">
-                    <select name = "mpgOrL/100">
+                  <input class="form-control" type = "text" name = "efficiency" placeholder = "Insert Efficiency Here"/>
+                  <! Minor CSS bug. The MPG L/100 option is on it's own line and not next to "Fuel Efficiency">
+                    <select name = "efficiencyUnits">
                       <option value = "mpg">MPG</option>
-                      <option value = "L/100">L/100</option>
+                      <option value = "L100">L/100</option>
                     </select>
                   </div>
                 </div>
-
                 <div class="form-group">
                     <div class="col-md-6 col-md-offset-4">
                       <div class="checkbox">
                         <label>
-                          <input type="checkbox" name="allow" {{ old('allow') ? 'checked' : '' }}> Allow Others to View My Car Information
+                          <input type="checkbox" name="visibility" {{ old('allow') ? 'checked' : '' }}> Allow Others to View My Car Information
                         </label>
                       </div>
                     </div>
                   </div>
-
                   <div class="form-group">
                     <div class="col-md-8 col-md-offset-4">
                       <button type="submit" class="btn btn-primary">

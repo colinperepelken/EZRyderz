@@ -35,6 +35,10 @@ Route::get('/schedule', function() {
 Route::get('/profile/{user_id?}', 'ProfileController@show')->where('user_id', '[0-9]+'); // id must be integer
 
 
+// send user's "car information" input to database
+Route::post('/insertcarinformation', 'InputCarInfoController@submit');
+
+
 Auth::routes();
 
 // Home

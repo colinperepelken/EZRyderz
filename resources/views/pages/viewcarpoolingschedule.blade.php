@@ -12,14 +12,15 @@
 <?php
   $carpooler_id = $_GET["id"];
   $carpoolers = DB::select(DB::raw("SELECT * FROM users, ride_requests WHERE users.id = ride_requests.user_id AND ".$carpooler_id." = users.id"));
+  $user = DB::table('users')->where('id', $carpooler_id)->first();
 ?>
 <div class="container">
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
       <div class="panel panel-default">
         <div class="panel-heading"><?php foreach ($carpoolers as $carpooler) { echo $carpooler->name."'s Riding Schedule"; } ?>
-          <!-- Profile image would be here-->
-        <img src="" alt =""/>
+          <!-- Profile image -->
+        <img src="/uploads/avatars/{{ $user->avatar }}" style="width:32px; height:32px; position:relative;">
         </div>
         <div class="panel-body">
           <div class="col-md-6">

@@ -12,13 +12,14 @@
 <?php
   $driver_id = $_GET["id"];
   $drivers = DB::select(DB::raw("SELECT * FROM users, ride_offers WHERE users.id = ride_offers.user_id AND ".$driver_id." = users.id"));
+  $user = DB::table('users')->where('id', $driver_id)->first();
 ?>
 <div class="container">
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
       <div class="panel panel-default">
         <div class="panel-heading"><?php foreach ($drivers as $driver) { echo $driver->name."'s Driving Schedule"; } ?>
-          <!-- Profile image would be here-->
+        <img src="/uploads/avatars/{{ $user->avatar }}" style="width:32px; height:32px; position:relative;">
         <img src="" alt =""/>
         </div>
         <div class="panel-body">

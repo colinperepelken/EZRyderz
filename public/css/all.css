@@ -91,68 +91,81 @@ div input {
 
 
 /*The following is css for the welcome page*/
-#welcome-masthead {
-	height: 6em;
-
-	margin: 2em 5em;
-	padding-top: 0.1px;
-
-	white-space: nowrap;
-	text-align: center;
-
-	background-color: #e8eaed;
+.wrapper {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  font-weight: bold;
+  text-align: center;
 }
 
-#welcome-left-section {
-	float: left;
-
-	padding: 0.8em;
-	margin-right: 2em;
-	margin-left: 2em;
-	
-	height: 1000px;
-	width: 10%;
-
-	background-color: #e8eaed;
-	border: thin,solid,#000000;
+.wrapper > * {
+  padding: 10px;
+  flex: 1 100%;
 }
 
-/*Having a really hard time getting this to stick to the right section. Will continue work later */
-#welcome-center-section {
-	padding: 0.8em;
-	margin-right: 2em;
-
-	height: 1000px;
-	width: 61%;
-
-	display: inline-block;
-
-	background-color: #e8eaed;
-	border: thin,solid,#000000;
+.header {
+  height: 7em;
+  background: #e8eaed;
+  margin-bottom: 2em;
 }
 
-#welcome-right-section {
-	float: right;
+.footer {
+  background: lightgreen;
+  margin-top: 2em;
+}
 
-	padding: 0.8em;
-	margin-right:2em;
+.main {
+  text-align: left;
+  background: deepskyblue;
+  height: 500px;
+  margin-left: 2em;
+  margin-right: 2em;
+}
 
-	height: 1000px;
-	width: 20%;
+.aside-1 {
+  background: gold;
+  margin-left: 2em;
+}
 
-	background-color: #e8eaed;
-	border:thin,solid,#000000;
-}	
+.aside-2 {
+  background: hotpink;
+  margin-right: 2em;
+}
 
-#welcome-bottom {
-	width:auto;
-	height: 5em;
+@media all and (min-width: 600px) {
+  .aside-1 {
+    flex: 1 auto;
+  }
 
-	padding: 0.8em;
-	margin: 2em;
-	
-	background-color: #e8eaed;
-	border:thin,solid,#000000;
+  .aside-2 {
+    flex: 2 auto;
+  }
+}
+@media all and (min-width: 800px) {
+  .main {
+    flex:  10 auto;
+  }
+
+  .aside-1 {
+    order: 1;
+  }
+
+  .main {
+    order: 2;
+  }
+
+  .aside-2 {
+    order: 3;
+  }
+
+  .footer {
+    order: 4;
+  }
 }
 
 

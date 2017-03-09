@@ -13,38 +13,14 @@
 </head>
 <body>
 
-<!--Top masthead of the website-->
-<header id="welcome-masthead">
-  <h1> Sexy Website Header </h1>
-</header>
-
-<!--Left portion of the website m-->
-<article id="welcome-left-section">
-  <nav>
-    <a href="#welcome-masthead">- To Top</a> <br>
-    <br>
-    <a href="#welcome-bottom">- To Bottom</a> <br>
-  </nav>
-</article>
-
-<!--Center portion of the website -->
-<article id="welcome-center-section">
-  <div>
-    <p> Some text in the center section </p>
-  </div>
-</article>
-
-<!--Right portion of the website-->
-<article id="welcome-right-section">
-  <div>
-    <p> Some text in the right section </p>
-  </div>
-</article>
-
-<footer id="welcome-bottom">
-  <div>
-    <p> This is the footer </p>
-  </div>
-</footer>
+<div class="wrapper">
+  <header class="header"><h1> Sexy Website Header </h1></header>
+  <article class="main">
+    <p>Lots of sexy destails about our website.</p>  
+  </article>
+  <aside class="aside aside-1">Sexy stuff here? <br> Do we need this? </aside>
+  <aside class="aside aside-2">Tons room for sexy advertisements</aside>
+  <footer class="footer">EZRyderz &copy; All stuff is illegal and whatnot!.... Sexy</footer>
+</div>
 
 @endsection

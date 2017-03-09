@@ -34,7 +34,7 @@ class ScheduleController extends Controller
             			'max_deviation' => $request->input('maxDeviation')
             		]
             	);
-            	
+
 
     		} else if ($status === "rider") {
 
@@ -47,7 +47,7 @@ class ScheduleController extends Controller
             			'arrival_time' => $request->input('depTime')
             		]
             	);
-            	
+
     		}
 
     		return view('pages.welcome'); // after insert, redirect user
@@ -55,5 +55,6 @@ class ScheduleController extends Controller
     	} else {
     		return view('auth.login'); // if user is not logged in, redirect to login page
     	}
+      
     }
 }

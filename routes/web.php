@@ -22,7 +22,13 @@ Route::get('/login', 'PagesController@login'); // login page
 
 Route::get('/carinformation', 'PagesController@carinformation'); // input car information page
 
-Route::get('/viewschedule', 'PagesController@viewschedule'); // view schedule page
+Route::get('/viewdrivingschedule', 'PagesController@viewdrivingschedule'); // view the schedule of a user offering a ride
+
+Route::get('/viewcarpoolingschedule', 'PagesController@viewcarpoolingschedule'); // view the schedule of a user requesting a ride
+
+Route::get('/driverslist', 'PagesController@driverslist'); // view list of people offering a ride
+
+Route::get('/carpoolerslist', 'PagesController@carpoolerslist'); // view list of people requesting a ride
 
 // Schedule Controller
 Route::get('/schedule/{status?}', array('as' => 'schedule', 'uses' => 'ScheduleController@show'));
@@ -31,6 +37,10 @@ Route::post('/schedule', ['as' => 'schedule', 'uses' => 'ScheduleController@subm
 // Profile Controller
 Route::get('/profile/{user_id?}', array('as' => 'profile', 'uses' => 'ProfileController@show'))->where('user_id', '[0-9]+'); // id must be integer
 Route::post('/profile', ['as' => 'profile', 'uses' => 'ProfileController@update']);
+
+// send user's "car information" input to database
+Route::post('/insertcarinformation', 'InputCarInfoController@submit');
+
 
 Auth::routes();
 

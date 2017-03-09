@@ -18,7 +18,8 @@
             <div class="col-md-6">
               <?php
                 foreach ($all_carpoolers as $carpooler) {
-                  echo "<img src='.$carpooler->avatar.' alt ='Profile Image'/><strong>".$carpooler->name."</strong>
+                  $avatar = $carpooler->avatar;
+                  echo "<img src=\"/uploads/avatars/$avatar\" style=\"width:32px; height:32px; position:relative;\"><strong>".$carpooler->name."</strong>
                   <a href='viewcarpoolingschedule?id=".urlencode($carpooler->user_id)."'><strong>Schedule</strong></a> <a href=''>Profile</a><br>";
                 }
               ?>

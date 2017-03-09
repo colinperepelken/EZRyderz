@@ -18,7 +18,8 @@
             <div class="col-md-6">
               <?php
                 foreach ($all_drivers as $driver) {
-                  echo "<img src='.$driver->avatar.' alt ='Profile Image'/><strong>".$driver->name."</strong>
+                  $avatar = $driver->avatar;
+                  echo "<img src=\"/uploads/avatars/$avatar\" style=\"width:32px; height:32px; position:relative;\"><strong>".$driver->name."</strong>
                   <a href='viewdrivingschedule?id=".urlencode($driver->user_id)."'><strong>Schedule</strong></a> <a href=''>Profile</a><br>";
                 }
               ?>

@@ -26,9 +26,9 @@ Route::get('/viewdrivingschedule', 'PagesController@viewdrivingschedule'); // vi
 
 Route::get('/viewcarpoolingschedule', 'PagesController@viewcarpoolingschedule'); // view the schedule of a user requesting a ride
 
-Route::get('/driverslist', 'PagesController@driverslist'); // view list of people offering a ride
+Route::get('/driverslist', array('as' => 'driverslist', 'uses' => 'PagesController@driverslist')); // view list of people offering a ride
 
-Route::get('/carpoolerslist', 'PagesController@carpoolerslist'); // view list of people requesting a ride
+Route::get('/carpoolerslist', array('as' =>'carpoolerslist', 'uses' => 'PagesController@carpoolerslist')); // view list of people requesting a ride
 
 // Schedule Controller
 Route::get('/schedule/{status?}', array('as' => 'schedule', 'uses' => 'ScheduleController@show'));

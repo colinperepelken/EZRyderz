@@ -65,6 +65,15 @@
                                         <a href="{{ route('profile') }}"><i class="fa fa-btn fa-user"></i>Profile</a>
                                     </li>
                                     <li>
+                                        <a href="{{ route('schedule') }}"><i class="fa fa-btn fa-user"></i>Make a Schedule</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('driverslist') }}"><i class="fa fa-btn fa-user"></i>Ride Offers</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('carpoolerslist') }}"><i class="fa fa-btn fa-user"></i>Ride Requests</a>
+                                    </li>
+                                    <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

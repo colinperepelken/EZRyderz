@@ -19,8 +19,9 @@
               <?php
                 foreach ($all_carpoolers as $carpooler) {
                   $avatar = $carpooler->avatar;
+                  $id = $carpooler->user_id;
                   echo "<img src=\"/uploads/avatars/$avatar\" style=\"width:32px; height:32px; position:relative;\"><strong>".$carpooler->name."</strong>
-                  <a href='viewcarpoolingschedule?id=".urlencode($carpooler->user_id)."'><strong>Schedule</strong></a> <a href=''>Profile</a><br>";
+                  <a href='viewcarpoolingschedule?id=".urlencode($carpooler->user_id)."'><strong>Schedule</strong></a> <a href='profile?id=$id'>Profile</a><br>";
                 }
               ?>
             </div>

@@ -35,7 +35,7 @@ Route::get('/schedule/{status?}', array('as' => 'schedule', 'uses' => 'ScheduleC
 Route::post('/schedule', ['as' => 'schedule', 'uses' => 'ScheduleController@submit']);
 
 // Profile Controller
-Route::get('/profile/{user_id?}', array('as' => 'profile', 'uses' => 'ProfileController@show'))->where('user_id', '[0-9]+'); // id must be integer
+Route::get('/profile', array('as' => 'profile', 'uses' => 'ProfileController@show'));
 Route::post('/profile', ['as' => 'profile', 'uses' => 'ProfileController@update']);
 
 // send user's "car information" input to database

@@ -1,4 +1,11 @@
-/*SUPER DUPER IMPORTANT COLOURING DONT OVERWRITE THIS WE WAN TO BE CONSISTENT*/
+/* This css page should be applied to every website page created (along with using @extends('layouts.app')) 
+   please add a section for any page you create that requires specific styling and title your classes following
+   the format "pagename-container-ect".
+
+   If you have any questions about general layout or overriding issues please talk to Zac. Thank you! */
+
+
+/*ENTIRE WEBSITES COLOUR PALETTE, PLEASE REMAIN CONSISTEN BY ADDING IN CONTAINERS TO THIS SECTION */
 body, footer{
 	background-color: #D9F5F2 !IMPORTANT;
 }

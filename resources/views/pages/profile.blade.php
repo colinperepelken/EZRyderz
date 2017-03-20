@@ -22,33 +22,76 @@
             <img src="/uploads/avatars/{{ $avatar }}">
         </div>
         <div id="profile-content">
-            @if (Auth::Guest() || Auth::user()->id != $user_id) <!-- if user is not logged in or profile does not belong to this user -->
+           
                 <p>Bio:</p>
-                <textarea name="bio" readonly>{{ $bio }}</textarea>
+                <textarea name="bio" readonly>Somebody once told me the world is gonna roll me
+I ain't the sharpest tool in the shed
+She was looking kind of dumb with her finger and her thumb
+In the shape of an "L" on her forehead
+
+Well the years start coming and they don't stop coming
+Fed to the rules and I hit the ground running
+Didn't make sense not to live for fun
+Your brain gets smart but your head gets dumb
+So much to do, so much to see
+So what's wrong with taking the back streets?
+You'll never know if you don't go
+You'll never shine if you don't glow
+
+Hey now, you're an all-star, get your game on, go play
+Hey now, you're a rock star, get the show on, get paid
+And all that glitters is gold
+Only shooting stars break the mold
+
+It's a cool place and they say it gets colder
+You're bundled up now, wait till you get older
+But the meteor men beg to differ
+Judging by the hole in the satellite picture
+The ice we skate is getting pretty thin
+The water's getting warm so you might as well swim
+My world's on fire, how about yours?
+That's the way I like it and I never get bored
+
+Hey now, you're an all-star, get your game on, go play
+Hey now, you're a rock star, get the show on, get paid
+All that glitters is gold
+Only shooting stars break the mold
+
+Hey now, you're an all-star, get your game on, go play
+Hey now, you're a rock star, get the show, on get paid
+And all that glitters is gold
+Only shooting stars
+
+Somebody once asked could I spare some change for gas?
+I need to get myself away from this place
+I said yep what a concept
+I could use a little fuel myself
+And we could all use a little change
+
+Well, the years start coming and they don't stop coming
+Fed to the rules and I hit the ground running
+Didn't make sense not to live for fun
+Your brain gets smart but your head gets dumb
+So much to do, so much to see
+So what's wrong with taking the back streets?
+You'll never know if you don't go (go!)
+You'll never shine if you don't glow
+
+Hey now, you're an all-star, get your game on, go play
+Hey now, you're a rock star, get the show on, get paid
+And all that glitters is gold
+Only shooting stars break the mold
+
+And all that glitters is gold
+Only shooting stars break the mold</textarea>
                 <p>Location: {{ $location }}</p>
-            @else
-                @if ($updated)
-                    <div id="update success" style="background-color: #66ff66; width: 135px;"> <!-- TODO: make this look nicer... also shouldn't be inline CSS, put in the sheet -->
-                        <p>Update Successful!</p>
-                    </div>
-                @endif
-                <form id="profile-form" enctype="multipart/form-data" class="form-horizontal" role="form" method="POST" action="{{ route('profile') }}">
-                                {{ csrf_field() }} <!-- this is needed to post form, do not delete -->
-                    Update Profile Picture:<input type="file" name="avatar">
-                    <br>
-                    <p>Bio:</p>
-                    <textarea rows="5" cols="40" name="bio" form="profile-form">{{ $bio }}</textarea>
-                    <p>Location:</p>
-                    <input id="user_profile_location" size="30" value="{{ $location }}" type="text" name="location">
-                    <input type="hidden" name="user_id" value="{{ $user_id }}">
-                    <br>
-                    <input type="submit" value="Update" class="btn btn-primary">
-                </form>
+           
+                
             @endif
         </div>
     </div>
     <footer class="row">
-        <!-- TODO: add footer -->
+        <!-- TODO: add footer Hi colin, this is zac :) your footer is going to blend into the background. If you dont want this to happen you are either going to have to make an article/section/aside and just plug it in at the bottom. You can technicly pull footer out of the colour scheme but i rather you didnt -->
     </footer>
     </div>
     </body>

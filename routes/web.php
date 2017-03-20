@@ -41,6 +41,8 @@ Route::post('/profile', ['as' => 'profile', 'uses' => 'ProfileController@update'
 // send user's "car information" input to database
 Route::post('/insertcarinformation', 'InputCarInfoController@submit');
 
+Route::get('/sendrequest', 'PagesController@sendrequest'); //Request form
+
 
 Auth::routes();
 

@@ -50,7 +50,5 @@ Auth::routes();
 Route::get('/home', 'HomeController@index');
 
 
-// driver map - this route is temporary for testing
-Route::get('/map', function() {
-	return view('pages.map');
-});
+// GOOGLE MAPS
+Route::get('/map', 'MapController@show');

@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+<?php use Cornford\Googlmapper\Facades\MapperFacade as Mapper; ?>
+
 @section('content')
 
 <!DOCTYPE html>
@@ -14,10 +16,9 @@
     </head>
     <body>    
  		<h3>Map of Carpooler Pickups</h3>
- 		<div id="map"></div>
- 		<script async defer
- 			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDciWiHhZjf-Aw0St4wFcpo6-oywp_A2Xw&callback=initMap">
- 		</script>
+ 		<div id="map">
+            {!! Mapper::render() !!}
+        </div>
     </body>
 </html>
 @endsection

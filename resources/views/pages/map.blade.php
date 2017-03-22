@@ -10,7 +10,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="../css/all.css" type="text/css"/>
         <script type="text/javascript" src="../js/driver-map.js"></script>
-        <title>Your Profile</title>
+        <title>Map</title>
     </head>
     <body>    
  		<h3>Map of Carpooler Pickups</h3>

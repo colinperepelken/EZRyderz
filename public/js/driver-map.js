@@ -1,16 +1,62 @@
-
-
-/*
- * Initialize the google map with a marker.
- */
 function initMap() {
-	var carpooler1 = {lat: -25.363, lng: 131.044};
-	var map = new google.maps.Map(document.getElementById('map'), {
-		zoom: 4,
-		center: carpooler1
-	});
-	var marker = new google.maps.Marker({
-		position: carpooler1,
-		map: map
-	});
+    var pointA = new google.maps.LatLng(driverStartLat, driverStartLong),
+        pointB = new google.maps.LatLng(driverEndLat, driverEndLong),
+        myOptions = {
+            zoom: 7,
+            center: pointA
+        },
+        map = new google.maps.Map(document.getElementById('map'), myOptions),
+        // Instantiate a directions service.
+        directionsService = new google.maps.DirectionsService,
+        directionsDisplay = new google.maps.DirectionsRenderer({
+            map: map
+        }),
+        // markers for the driver route
+        markerA = new google.maps.Marker({
+            position: pointA,
+            title: "point A",
+            label: "Driver Start",
+            map: map
+        }),
+        markerB = new google.maps.Marker({
+            position: pointB,
+            title: "point B",
+            label: "Driver End",
+            map: map
+        });
+
+
+        // carpooler pickup maerkers
+        var carpoolerMarkers = [];
+        for (var i = 0; i < rideRequests.size(); i++) {
+        	carpoolerMarkers.push(new google.maps.Marker({
+        		position: new google.maps.LatLng(rideRequests[i].start_address)
+        	}));
+        }
+
+
+
+    // get route from A to B
+    calculateAndDisplayRoute(directionsService, directionsDisplay, pointA, pointB);
+
 }
+
+
+
+function calculateAndDisplayRoute(directionsService, directionsDisplay, pointA, pointB) {
+    directionsService.route({
+        origin: pointA,
+        destination: pointB,
+        avoidTolls: true,
+        avoidHighways: false,
+        travelMode: google.maps.TravelMode.DRIVING
+    }, function (response, status) {
+        if (status == google.maps.DirectionsStatus.OK) {
+            directionsDisplay.setDirections(response);
+        } else {
+            window.alert('Directions request failed due to ' + status);
+        }
+    });
+}
+
+initMap();

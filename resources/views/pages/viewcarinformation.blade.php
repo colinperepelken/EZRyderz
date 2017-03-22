@@ -11,14 +11,14 @@
 </head>
 <?php
   $driver_id = $_GET["id"];
-  $drivers = DB::select(DB::raw("SELECT * FROM users, ride_offers WHERE users.id = ride_offers.user_id AND ".$driver_id." = users.id"));
+  $drivers = DB::select(DB::raw("SELECT * FROM users, carinformation WHERE users.id = carinformation.user_id AND ".$driver_id." = users.id"));
   $user = DB::table('users')->where('id', $driver_id)->first();
 ?>
 <div class="container">
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
       <div class="panel panel-default">
-        <div class="panel-heading"><?php foreach ($drivers as $driver) { echo $driver->name."'s Driving Schedule"; } ?>
+        <div class="panel-heading"><?php foreach ($drivers as $driver) { echo $driver->name."'s Car Information"; } ?>
         <img src="/uploads/avatars/{{ $user->avatar }}" style="width:32px; height:32px; position:relative;">
         <img src="" alt =""/>
         </div>
@@ -27,11 +27,12 @@
           <?php
           foreach ($drivers as $driver)
           {
-            echo "<strong>Starting Address: </strong>".$driver->start_address."<br>
-            <strong>Destination Address: </strong>".$driver->destination_address."<br>
-            <strong>Maximum Deviation Off Route: </strong>".$driver->max_deviation." meters<br>
-            <strong>Departure Time: </strong>".$driver->arrival_time."<br>
-            <strong>Return Time: </strong>".$driver->end_time."<br>";
+            echo "<strong>Make: </strong>".$driver->make."<br>
+            <strong>Model: </strong>".$driver->model."<br>
+            <strong>Year: </strong>".$driver->year."<br>
+            <strong>Number of Seats: </strong>".$driver->numberOfSeats."<br>
+            <strong>Air Conditioning: </strong>".$driver->hasAirConditioning."<br>
+            <strong>Fuel Efficiency: </strong>".$driver->efficiency." ".$driver->efficiencyUnits."<br>";
           }
           ?>
           </div>

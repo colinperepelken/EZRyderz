@@ -22,6 +22,8 @@ Route::get('/login', 'PagesController@login'); // login page
 
 Route::get('/carinformation', 'PagesController@carinformation'); // input car information page
 
+Route::get('/viewcarinformation', 'PagesController@viewcarinformation'); // view the schedule of a user offering a ride
+
 Route::get('/viewdrivingschedule', 'PagesController@viewdrivingschedule'); // view the schedule of a user offering a ride
 
 Route::get('/viewcarpoolingschedule', 'PagesController@viewcarpoolingschedule'); // view the schedule of a user requesting a ride

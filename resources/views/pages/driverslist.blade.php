@@ -15,16 +15,15 @@
       <div class="panel panel-default">
         <div class="panel-heading">All Users Offering a Ride
           <div class="panel-body">
-            <div class="col-md-6">
               <?php
                 foreach ($all_drivers as $driver) {
                   $avatar = $driver->avatar;
                   $id = $driver->user_id;
-                  echo "<img src=\"/uploads/avatars/$avatar\" style=\"width:32px; height:32px; position:relative;\"><strong>".$driver->name."</strong>
-                  <a href='viewdrivingschedule?id=".urlencode($driver->user_id)."'><strong>Schedule</strong></a> <a href='profile?id=$id'>Profile</a><br>";
+                  echo "<hr><img src=\"/uploads/avatars/$avatar\" style=\"width:32px; height:32px; position:relative;\"><strong> ".$driver->name."</strong>
+                  <a href='viewdrivingschedule?id=".urlencode($driver->user_id)."'><strong>Schedule</strong></a> <a href='profile?id=$id'><strong>Profile</strong></a>
+                  <a href='viewcarinformation?id=".urlencode($driver->user_id)."'><strong>Car Information</strong></a><br>";
                 }
               ?>
-            </div>
           </div>
         </div>
       </div>

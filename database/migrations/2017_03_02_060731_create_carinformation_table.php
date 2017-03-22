@@ -16,7 +16,7 @@ class CreateCarInformationTable extends Migration
     {
         Schema::create('carinformation', function (Blueprint $table) {
             $table->increments('id'); //Primary key
-            $table->integer('userId')->unique(); //CarInformation(userId) is a foreign key to Users(id);
+            $table->integer('user_id')->unique(); //CarInformation(userId) is a foreign key to Users(id);
             $table->string('make');
             $table->string('model');
             $table->integer('year');
@@ -25,7 +25,7 @@ class CreateCarInformationTable extends Migration
             $table->string('hasAirConditioning');
             $table->integer('efficiency');
             $table->string('efficiencyUnits');
-            $table->string('visibility');
+            //Removed visibility option as every driver's car information should be visible
         });
     }
 

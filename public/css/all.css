@@ -221,3 +221,11 @@ div input {
 	margin-right: 0;
 	width: 100%;
 }
+
+
+/* GOOGLE MAPS STUFF */
+#map {
+	width: 100%;
+	height: 400px;
+	background-color: grey;
+}

@@ -87,7 +87,7 @@ Only shooting stars break the mold</textarea>
                 <p>Location: {{ $location }}</p>
            
                 
-            @endif
+     
         </div>
     </div>
     <footer class="row">

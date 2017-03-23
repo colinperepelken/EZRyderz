@@ -13,7 +13,7 @@
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
       <div class="panel panel-default">
-        <div class="panel-heading">All Users Requesting a Ride
+        <div class="panel-heading"><?php if (isset($all_mine) && $all_mine == true){ echo 'My Ride Requests'; }else{ echo 'All Users Requesting a Ride';} ?>
           <div class="panel-body">
             <div class="col-md-6">
               <?php
@@ -23,7 +23,7 @@
                   echo "<img src=\"/uploads/avatars/$avatar\" style=\"width:32px; height:32px; position:relative;\"><strong>".$carpooler->name."</strong>
                   <a href='viewcarpoolingschedule?id=".urlencode($carpooler->user_id)."'><strong>Schedule</strong></a> <a href='profile?id=$id'>Profile</a>";
 
-                  if ($all_mine) {
+                  if (isset($all_mine) && $all_mine) {
                     echo '<form style="display:inline;" method="get" action="map">';
                     echo '<button type="submit">View Details</button></form>';
                     echo '<form style="display:inline;" method="get" action="">';

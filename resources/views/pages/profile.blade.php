@@ -14,7 +14,7 @@
     <body>
     <div class="container">
     <header class="row">
-      
+
     </header>
     <div id="main" class="row">
         <h1>{{ $name }}'s Profile</h1>
@@ -26,6 +26,7 @@
                 <p>Bio:</p>
                 <textarea name="bio" readonly>{{ $bio }}</textarea>
                 <p>Location: {{ $location }}</p>
+                <a href='ratings'>Rate As Driver</a><br>
             @else
                 @if ($updated)
                     <div id="update success" style="background-color: #66ff66; width: 135px;"> <!-- TODO: make this look nicer... also shouldn't be inline CSS, put in the sheet -->

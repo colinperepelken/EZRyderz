@@ -53,6 +53,13 @@ Route::post('/insertcarinformation', 'InputCarInfoController@submit');
 Route::get('/sendrequest', 'PagesController@sendrequest'); //Request form
 
 
+
+//Ratings
+Route::get('/ratings', 'PagesController@ratings');
+Route::post('/insertrating', ['as' => 'insertrating', 'uses' => 'RatingController@submit']);
+
+
+
 Auth::routes();
 
 // Home

@@ -29,9 +29,8 @@
           {
             echo "<strong>Starting Address: </strong>".$carpooler->start_address."<br>
             <strong>Destination Address: </strong>".$carpooler->destination_address."<br>
-            <strong>Departure Time: </strong>".$carpooler->arrival_time."<br>
-            <strong>Return Time: </strong>Carpoolers dont currently have a time field in the ride_requests table<br>";
-          }
+            <strong>Arrival Time: </strong>".$carpooler->arrival_time."<br>";
+          } //  <strong>Return Time: </strong>Carpoolers dont currently have a time field in the ride_requests table<br>";
           ?>
           </div>
         </div>

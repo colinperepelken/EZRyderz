@@ -99,4 +99,14 @@ class PagesController extends Controller
         return view('pages.carpoolerslist');
       }
     }
+
+    public function compatibledrivers() {
+      if (Auth::check()) {
+
+        $user_id = Auth::user()->id;
+
+        $all_drivers = DB::select(DB::raw("SELECT * FROM users, ride_offers, carinformation WHERE users.id = ride_offers.user_id AND users.id = carinformation.user_id "));
+        return view('pages.compatibledrivers', ['all_drivers' => $all_drivers]);
+      }
+    }
 }

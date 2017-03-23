@@ -26,11 +26,13 @@
                 <a href="profile?id=<?=$id?>">Profile</a>
 
                 <?php if (isset($all_mine) && $all_mine): ?>
-                  <form style="display:inline;" method="get" action="{{ route('map') }}">
+                  <form style="display:inline;" method="get" action="{{ route('mapshow') }}">
                     <input type="hidden" name="offer_id" value=""> <!-- this will not work on this page... see driverslist.blade.php -->
                     <button type="submit">View Details</button>
                   </form>
-                  <form style="display:inline;" method="get" action="">
+                  <form style="display:inline;" role="form" method="POST" action="{{ route('map-cancel') }}">
+                    {{ csrf_field() }} <!-- this is needed to post form, do not delete -->
+                    <input type="hidden" value="<?=$carpooler->request_id;?>" name="offer_id">
                     <button type="submit">Cancel</button>
                   </form>
                 <?php endif ?>

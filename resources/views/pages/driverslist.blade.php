@@ -31,8 +31,10 @@
                     <input type="hidden" name="offer_id" value="<?=$driver->offer_id?>">
                     <button type="submit">View Details</button>
                   </form>
-                  <form style="display:inline;" method="get" action="">
-                    <button type="submit">Cancel</button>
+                  <form style="display:inline;" role="form" method="POST" action="{{ route('map-cancel') }}">
+                    {{ csrf_field() }} <!-- this is needed to post form, do not delete -->
+                    <input type="hidden" value="<?=$driver->offer_id;?>" name="offer_id">
+                    <button type="submit">Cancel Ride Offer</button>
                   </form>
                 <?php endif ?>
                 <br>

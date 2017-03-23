@@ -14,7 +14,7 @@ class CreateRideRequestsTable extends Migration
     public function up()
     {
         Schema::create('ride_requests', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('request_id');
             $table->integer('user_id');
             $table->string('start_address');
             $table->string('destination_address');

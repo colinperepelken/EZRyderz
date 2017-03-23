@@ -38,7 +38,6 @@ Route::get('/carpoolerslist', array('as' =>'carpoolerslist', 'uses' => 'PagesCon
 Route::get('/myoffers', ['as' => 'myoffers', 'uses' => 'PagesController@myoffers']);
 Route::get('/myrequests', ['as' => 'myrequests', 'uses' => 'PagesController@myrequests']);
 
-
 // Schedule Controller
 Route::get('/schedule/{status?}', array('as' => 'schedule', 'uses' => 'ScheduleController@show'));
 Route::post('/schedule', ['as' => 'schedule', 'uses' => 'ScheduleController@submit']);
@@ -52,19 +51,14 @@ Route::post('/insertcarinformation', 'InputCarInfoController@submit');
 
 Route::get('/sendrequest', 'PagesController@sendrequest'); //Request form
 
-
-
 //Ratings
 Route::get('/ratings', 'PagesController@ratings');
 Route::post('/insertrating', ['as' => 'insertrating', 'uses' => 'RatingController@submit']);
-
-
 
 Auth::routes();
 
 // Home
 Route::get('/home', 'HomeController@index');
-
 
 // GOOGLE MAPS
 Route::get('/map', 'MapController@show'); // show the map

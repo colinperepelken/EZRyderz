@@ -17,7 +17,7 @@
   <form method="get" action="{{ route('requestStart') }}">
     <legend>What are you doing?</legend>
     <input type="radio" name="status" value="rider"> Ask a rider to join you.<br>
-    <input type="radio" name="status" value="driver"> Ask a driver to join you.<br>
+    <input type="radio" name="status" value="driver"> Ask a driver to drive you.<br>
     <input type="submit" value="Next">
   </form>
 @else

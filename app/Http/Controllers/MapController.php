@@ -43,7 +43,6 @@ class MapController extends Controller
     			'name' => $rider_info->name,
     			'id' => $rider->carpooler_id
     		));
-    		echo $riders_info[0]['name'];
     	}
 
     	// fetch all ride requests

@@ -1,4 +1,10 @@
 function initMap() {
+
+    // custom marker images
+    var start_image = 'http://maps.google.com/mapfiles/ms/icons/green-dot.png';
+    var finish_image = 'http://i.imgur.com/vCXHp7U.png';
+
+
     var pointA = new google.maps.LatLng(driverStartLat, driverStartLong),
         pointB = new google.maps.LatLng(driverEndLat, driverEndLong),
         myOptions = {
@@ -9,32 +15,45 @@ function initMap() {
         // Instantiate a directions service.
         directionsService = new google.maps.DirectionsService,
         directionsDisplay = new google.maps.DirectionsRenderer({
-            map: map
+            map: map,
+            suppressMarkers: true
         }),
         // markers for the driver route
         markerA = new google.maps.Marker({
             position: pointA,
             title: "point A",
-            label: "Driver Start",
-            map: map
+            label: "Your Start",
+            map: map,
+            icon: start_image
         }),
         markerB = new google.maps.Marker({
             position: pointB,
             title: "point B",
-            label: "Driver End",
-            map: map
+            label: "Your Destination",
+            map: map,
+            icon: finish_image
         });
 
 
-        // carpooler pickup maerkers
+        // carpooler pickup markers
         var carpoolerMarkers = [];
-        for (var i = 0; i < carpooler_positions.length; i++) {
-        	carpooler_positions.push(new google.maps.Marker({
-        		position: new google.maps.LatLng(carpooler_positions[i]['lat'], carpooler_positions[i]['long']),
-        		title: "carpooler" + i,
-        		label: "Carpooler " + i,
+        for (var i = 0; i < carpooler_info.length; i++) {
+        	new google.maps.Marker({
+        		position: new google.maps.LatLng(carpooler_info[i]['lat'], carpooler_info[i]['long']),
+        		title: "carpooler" + carpooler_info[i]['id'],
+                id: carpooler_info[i]['id'],
+                address: carpooler_info[i]['start_address'],
+        		label: carpooler_info[i]['username'],
         		map: map
-        	}));
+        	}).addListener('click', function() { // pin click listener
+
+                document.getElementById('carpooler-name').innerHTML = "Carpooler: " + this.label;
+                document.getElementById('pickup').innerHTML = "Pickip address: " + this.address;
+                document.getElementById('profile-link').href = "/profile?id=" + this.id;
+                document.getElementById('profile-link').innerHTML = this.label + "'s Profile";
+                document.getElementById('add-to-group').style.display = "inline";
+
+            });
         }
 
 

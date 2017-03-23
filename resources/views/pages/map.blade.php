@@ -19,17 +19,30 @@
             var driverStartLong = {{ $driver_start['long'] }};
             var driverEndLat = {{ $driver_end['lat'] }};
             var driverEndLong = {{ $driver_end['long'] }};
-            var rideRequests = <?php echo json_encode($ride_requests); ?>;
-            var carpooler_positions = <?php echo json_encode($carpooler_positions); ?>
+            var carpooler_info = <?php echo json_encode($carpooler_info); ?>
 
         </script>
         <script type="text/javascript" src="../js/driver-map.js"></script>
         <title>Map</title>
     </head>
     <body>    
- 		<h3>Map of Carpooler Pickups</h3>
+ 		<h2>Viewing Your Ride Offer</h2>
  		<div id="map">
             <!-- MAP WILL BE RENDERED HERE -->
+        </div>
+        <div id="info">
+            <h3>Your Ride Offer</h3>
+            <ul>
+                <li>Your Start Address: {{ $driver_start_address }}</li>
+                <li>Your Destination: {{ $driver_end_address }}</li>
+                <li><button type="button">Cancel Ride Offer</button></li>
+            </ul>
+            <h3 id="carpooler-name">Click a pin for more info...</h3>
+            <ul>
+                <li id="pickup">Pickup address:</li>
+                <li><a id="profile-link" href=""></a></li>
+                <li><button id="add-to-group" type="button">Add to Ride Group</button></li>
+            </ul>
         </div>
         <script async defer
            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDciWiHhZjf-Aw0St4wFcpo6-oywp_A2Xw&callback=initMap">

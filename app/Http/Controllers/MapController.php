@@ -58,4 +58,12 @@ class MapController extends Controller
 			'driver_end_address' => $driver_end_address
 		]); // return the map view
     }
+
+
+    /*
+     * Cancels the ride offer.
+     */
+    public function cancelOffer(Request $request) {
+    	echo $request->offer_id;
+    }
 }

@@ -21,7 +21,17 @@
                   $avatar = $driver->avatar;
                   $id = $driver->user_id;
                   echo "<img src=\"/uploads/avatars/$avatar\" style=\"width:32px; height:32px; position:relative;\"><strong>".$driver->name."</strong>
-                  <a href='viewdrivingschedule?id=".urlencode($driver->user_id)."'><strong>Schedule</strong></a> <a href='profile?id=$id'>Profile</a><br>";
+                  <a href='viewdrivingschedule?id=".urlencode($driver->user_id)."'><strong>Schedule</strong></a> <a href='profile?id=$id'>Profile</a>";
+
+
+                  if ($all_mine) {
+                    echo '<form style="display:inline;" method="get" action="map">';
+                    echo '<button type="submit">View Details</button></form>';
+                    echo '<form style="display:inline;" method="get" action="">';
+                    echo '<button type="submit">Cancel</button></form>';
+                  }
+
+                  echo "<br>";
                 }
               ?>
             </div>

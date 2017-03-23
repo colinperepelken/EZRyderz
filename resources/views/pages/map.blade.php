@@ -35,7 +35,13 @@
             <ul>
                 <li>Your Start Address: {{ $driver_start_address }}</li>
                 <li>Your Destination: {{ $driver_end_address }}</li>
-                <li><button type="button">Cancel Ride Offer</button></li>
+                <li>
+                    <form role="form" method="POST" action="{{ route('map-cancel') }}">
+                        {{ csrf_field() }} <!-- this is needed to post form, do not delete -->
+                        <input type="hidden" value="3" name="offer_id">
+                        <button type="submit">Cancel Ride Offer</button>
+                    </form>
+                </li>
             </ul>
             <h3 id="carpooler-name">Click a pin for more info...</h3>
             <ul>

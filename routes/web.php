@@ -30,6 +30,11 @@ Route::get('/driverslist', array('as' => 'driverslist', 'uses' => 'PagesControll
 
 Route::get('/carpoolerslist', array('as' =>'carpoolerslist', 'uses' => 'PagesController@carpoolerslist')); // view list of people requesting a ride
 
+// view my ride requests or my ride offers
+Route::get('/myoffers', ['as' => 'myoffers', 'uses' => 'PagesController@myoffers']);
+Route::get('/myrequests', ['as' => 'myrequests', 'uses' => 'PagesController@myrequests']);
+
+
 // Schedule Controller
 Route::get('/schedule/{status?}', array('as' => 'schedule', 'uses' => 'ScheduleController@show'));
 Route::post('/schedule', ['as' => 'schedule', 'uses' => 'ScheduleController@submit']);
@@ -51,4 +56,5 @@ Route::get('/home', 'HomeController@index');
 
 
 // GOOGLE MAPS
-Route::get('/map', 'MapController@show');
+Route::get('/map', 'MapController@show'); // show the map
+Route::post('/map', ['as' => 'map-cancel', 'uses' => 'MapController@cancelOffer']); // cancel the ride offer

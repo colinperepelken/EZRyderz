@@ -28,6 +28,8 @@ Route::get('/viewdrivingschedule', 'PagesController@viewdrivingschedule'); // vi
 
 Route::get('/viewcarpoolingschedule', 'PagesController@viewcarpoolingschedule'); // view the schedule of a user requesting a ride
 
+Route::get('/compatibledrivers', array('as' => 'compatibledrivers', 'uses' => 'PagesController@compatibledrivers')); // view a list of compatible drivers for a carpooler's specific ride request
+
 Route::get('/driverslist', array('as' => 'driverslist', 'uses' => 'PagesController@driverslist')); // view list of people offering a ride
 
 Route::get('/carpoolerslist', array('as' =>'carpoolerslist', 'uses' => 'PagesController@carpoolerslist')); // view list of people requesting a ride
@@ -68,3 +70,8 @@ Route::get('/home', 'HomeController@index');
 Route::get('/map', 'MapController@show'); // show the map
 Route::post('/mapshow', ['as' => 'mapshow', 'uses' => 'MapController@show']); // send the map a specific ride offer to show
 Route::post('/map', ['as' => 'map-cancel', 'uses' => 'MapController@cancelOffer']); // cancel the ride offer
+Route::post('/map-add-rider', ['as' => 'map-add-rider', 'uses' => 'MapController@addRider']); // cancel the ride offer
+
+// Request Controller
+Route::get('/sendrequest', array('as' => 'requestStart', 'uses' => 'RequestController@getId'));
+Route::post('/request', ['as' => 'request', 'uses' => 'RequestController@sendMessage']);

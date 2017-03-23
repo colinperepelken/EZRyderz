@@ -22,7 +22,7 @@
             <img src="/uploads/avatars/{{ $avatar }}">
         </div>
         <div id="profile-content">
-            @if (Auth::guest()) <!-- if user is not logged in -->
+            @if (Auth::Guest() || Auth::user()->id != $user_id) <!-- if user is not logged in or profile does not belong to this user -->
                 <p>Bio:</p>
                 <textarea name="bio" readonly>{{ $bio }}</textarea>
                 <p>Location: {{ $location }}</p>

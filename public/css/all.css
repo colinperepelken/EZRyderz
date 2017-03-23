@@ -1,10 +1,42 @@
+/* This css page should be applied to every website page created (along with using @extends('layouts.app')) 
+   please add a section for any page you create that requires specific styling and title your classes following
+   the format "pagename-container-ect".
+
+   If you have any questions about general layout or overriding issues please talk to Zac. Thank you! */
+
+
+/*ENTIRE WEBSITES COLOUR PALETTE, PLEASE REMAIN CONSISTEN BY ADDING IN CONTAINERS TO THIS SECTION */
+body, footer{
+	background-color: #D9F5F2 !IMPORTANT;
+}
+
+section, article, header, aside{
+	background-color: #AFDED9 !IMPORTANT;
+}
+
+
+form {
+	background-color: #ffffff !IMPORTANT;
+}
+
+
+
 /*General css for all pages (DO NOT USE THIS MUCH PLEASE, ONLY SMALL SPECIFIC THINGS YOU WANT TO KEEP CONSISTENT)*/
 .heading {
 	text-align: center;
 }
 
+.footer {
+    position:fixed;
+    left:0px;
+    bottom:0px;
+    height:20px;
+    width:100%;
+	text-align: center;
+	margin-top: 2em;
+}
+
 form {
-	background-color: #ffffff;
 	padding: 1em;
 	width: 60%;
 	margin-left: auto;
@@ -110,45 +142,38 @@ div input {
 
 .header {
   height: 7em;
-  background: #e8eaed;
   margin-bottom: 2em;
-}
-
-.footer {
-  background: lightgreen;
-  margin-top: 2em;
 }
 
 .main {
   text-align: left;
-  background: deepskyblue;
-  height: 500px;
+  height: 400px;
   margin-left: 2em;
   margin-right: 2em;
 }
 
 .aside-1 {
-  background: gold;
+  background: #AFDED9;
   margin-left: 2em;
 }
 
 .aside-2 {
-  background: hotpink;
+  background: #AFDED9;
   margin-right: 2em;
 }
 
 @media all and (min-width: 600px) {
   .aside-1 {
-    flex: 1 auto;
+    flex: 1 0;
   }
 
   .aside-2 {
-    flex: 2 auto;
+    flex: 2 0;
   }
 }
 @media all and (min-width: 800px) {
   .main {
-    flex:  10 auto;
+    flex:  4 0;
   }
 
   .aside-1 {
@@ -161,10 +186,6 @@ div input {
 
   .aside-2 {
     order: 3;
-  }
-
-  .footer {
-    order: 4;
   }
 }
 
@@ -199,4 +220,22 @@ div input {
 	margin-left: 0;
 	margin-right: 0;
 	width: 100%;
+}
+
+
+/* GOOGLE MAPS STUFF */
+#map {
+	width: 700px;
+	height: 550px;
+	background-color: grey;
+	margin-left: 10em;
+	float: left;
+}
+
+#info {
+
+}
+
+#add-to-group {
+	display: none;
 }

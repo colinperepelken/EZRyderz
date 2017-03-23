@@ -13,15 +13,32 @@
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
       <div class="panel panel-default">
-        <div class="panel-heading">All Users Requesting a Ride
+        <div class="panel-heading"><?php if (isset($all_mine) && $all_mine == true){ echo 'My Ride Requests'; }else{ echo 'All Users Requesting a Ride';} ?>
           <div class="panel-body">
             <div class="col-md-6">
-              <?php
-                foreach ($all_carpoolers as $carpooler) {
-                  echo "<img src='.$carpooler->avatar.' alt ='Profile Image'/><strong>".$carpooler->name."</strong>
-                  <a href='viewcarpoolingschedule?id=".urlencode($carpooler->user_id)."'><strong>Schedule</strong></a> <a href=''>Profile</a><br>";
-                }
-              ?>
+
+              <?php foreach ($all_carpoolers as $carpooler): ?>
+                <?php $avatar = $carpooler->avatar; ?>
+                <?php $id = $carpooler->user_id; ?>
+                <img src="/uploads/avatars/{{ $avatar }}" style="width:32px; height:32px; position:relative;">
+                <strong>{{ $carpooler->name }}</strong>
+                <a href="viewcarpoolingschedule?id=<?=urlencode($carpooler->user_id);?>"><strong>Schedule</strong></a>
+                <a href="profile?id=<?=$id?>">Profile</a>
+
+                <?php if (isset($all_mine) && $all_mine): ?>
+                  <form style="display:inline;" method="get" action="{{ route('mapshow') }}">
+                    <input type="hidden" name="offer_id" value=""> <!-- this will not work on this page... see driverslist.blade.php -->
+                    <button type="submit">View Details</button>
+                  </form>
+                  <form style="display:inline;" role="form" method="POST" action="{{ route('map-cancel') }}">
+                    {{ csrf_field() }} <!-- this is needed to post form, do not delete -->
+                    <input type="hidden" value="<?=$carpooler->request_id;?>" name="offer_id">
+                    <button type="submit">Cancel</button>
+                  </form>
+                <?php endif ?>
+                <br>
+              <?php endforeach ?>
+
             </div>
           </div>
         </div>

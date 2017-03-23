@@ -10,13 +10,21 @@ use Image; // for the profile image
 class ProfileController extends Controller
 {
 
-    public function show($user_id = null)
+    public function show(Request $request)
     {
-    	if (Auth::Check()) {
-    		$user_id = Auth::user()->id;
-    	} else if (!isset($user_id)) {
-    		return view('auth.login'); // if user is not logged in, redirect to login page
-    	}
+    	// if (Auth::Check()) {
+    	// 	$user_id = Auth::user()->id;
+    	// } else if (!isset($user_id)) {
+    	// 	return view('auth.login'); // if user is not logged in, redirect to login page
+    	// }
+        $user_id = $request->input('id');
+        if (is_null($user_id)) {
+            if (Auth::Check()) {
+                $user_id = Auth::user()->id;
+            } else {
+                return view('auth.login'); // if user is not logged in, redirect to login page
+            }
+        }
 
     	// fetch user information from id
     	$user = DB::table('users')->where('id', $user_id)->first();

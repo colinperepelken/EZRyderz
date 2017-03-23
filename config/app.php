@@ -180,6 +180,9 @@ return [
         // intervention image for profile pictures (added by Colin)
         Intervention\Image\ImageServiceProvider::class,
 
+        // google maps added by Colin
+        Cornford\Googlmapper\MapperServiceProvider::class,
+
     ],
 
     /*
@@ -229,6 +232,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Image' => Intervention\Image\Facades\Image::class, // for profile pictures... added by colin
+        'Mapper' => Cornford\Googlmapper\Facades\MapperFacade::class, // for google maps api... added by colin
     ],
 
 ];

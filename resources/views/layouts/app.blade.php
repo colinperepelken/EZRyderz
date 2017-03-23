@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="../css/all.css" type="text/css"/>
 
     <!-- Scripts -->
     <script>
@@ -36,7 +37,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        EZRyderz
+                        <img src="{{URL::asset('/img/logo.png')}}" alt="EZRyderz" height="30" width="230">
                     </a>
                 </div>
 
@@ -65,6 +66,21 @@
                                         <a href="{{ route('profile') }}"><i class="fa fa-btn fa-user"></i>Profile</a>
                                     </li>
                                     <li>
+                                        <a href="{{ route('schedule') }}"><i class="fa fa-btn fa-user"></i>Make a Schedule</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('driverslist') }}"><i class="fa fa-btn fa-user"></i>Ride Offers</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('carpoolerslist') }}"><i class="fa fa-btn fa-user"></i>Ride Requests</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('myoffers') }}"><i class="fa fa-btn fa-user"></i>My Offers</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('myrequests') }}"><i class="fa fa-btn fa-user"></i>My Requests</a>
+                                    </li>
+                                    <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -82,7 +98,9 @@
                 </div>
             </div>
         </nav>
-
+        <footer class=footer>
+            Use of this site constitutes acceptance of our User Agreement &copy; 2017 EZRyderz inc. All rights reserved.
+        </footer>
         @yield('content')
     </div>
 

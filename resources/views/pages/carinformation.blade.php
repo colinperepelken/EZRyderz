@@ -21,17 +21,17 @@
                   <div class="col-md-6">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <select class="form-control" name = "make">
-                      <option value = "toyota">Toyota</option>
-                      <option value = "gm">GM</option>
-                      <option value = "nissan">Nissan</option>
-                      <option value = "honda">Honda</option>
-                      <option value = "hyundai">Hyundai</option>
-                      <option value = "mercedes">Mercedes</option>
-                      <option value = "bmw">BMW</option>
-                      <option value = "chevrolet">Chevrolet</option>
-                      <option value = "chrystler">Chrystler</option>
-                      <option value = "dodge">Dodge</option>
-                      <option value = "jeep">Jeep</option>
+                      <option value = "Toyota">Toyota</option>
+                      <option value = "GM">GM</option>
+                      <option value = "Nissan">Nissan</option>
+                      <option value = "Honda">Honda</option>
+                      <option value = "Hyundai">Hyundai</option>
+                      <option value = "Mercedes">Mercedes</option>
+                      <option value = "BMW">BMW</option>
+                      <option value = "Chevrolet">Chevrolet</option>
+                      <option value = "Chrystler">Chrystler</option>
+                      <option value = "Dodge">Dodge</option>
+                      <option value = "Jeep">Jeep</option>
                     </select>
                   </div>
                 </div>
@@ -105,19 +105,10 @@
                   <! Minor CSS bug. The MPG L/100 option is on it's own line and not next to "Fuel Efficiency">
                     <select name = "efficiencyUnits">
                       <option value = "mpg">MPG</option>
-                      <option value = "L100">L/100</option>
+                      <option value = "L/100">L/100</option>
                     </select>
                   </div>
                 </div>
-                <div class="form-group">
-                  <label class="col-md-4 control-label">Allow Others to View My Car Information? </label>
-                  <div class="col-md-6">
-                    <div class="">
-                    <input type = "radio" name = "visibility" value = "yes" checked>Yes
-                    <input type = "radio" name = "visibility" value = "no">No
-                  </div>
-                </div>
-              </div> 
                   <div class="form-group">
                     <div class="col-md-8 col-md-offset-4">
                       <button type="submit" class="btn btn-primary">

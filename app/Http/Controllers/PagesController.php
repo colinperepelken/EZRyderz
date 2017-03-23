@@ -28,6 +28,11 @@ class PagesController extends Controller
       return view('pages.carinformation');
     }
 
+    public function viewcarinformation()
+    {
+      return view('pages.viewcarinformation');
+    }
+
     public function viewdrivingschedule()
     {
       return view('pages.viewdrivingschedule');

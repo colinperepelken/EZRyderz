@@ -47,6 +47,24 @@ class PagesController extends Controller
       return view('pages.ratings');
     }
 
+
+
+
+
+
+    /*
+      Retreives list of all drivers from database
+    } */
+    public function userRatings(){
+        $all_ratings = DB::select(DB::raw("SELECT driverRating FROM rating"));
+        return view('pages.profile', ['all_ratings' => $all_ratings]);
+    }
+
+
+
+
+
+
     /*
       Retreives list of all drivers from database
     } */

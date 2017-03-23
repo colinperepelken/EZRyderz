@@ -13,12 +13,12 @@ class RatingController extends Controller{
     		return view('auth.login'); // if user is not logged in, redirect to login page
     	}
 
-      $value = array('driverRating' => $req->Drating,'commentASdriver' => $req->comment,);
+      $value = array('driverRating' => $req->Drating,'commentASdriver' => $req->comment, 'userId' => $req->rating_id);
       DB::table('rating')->insert($value);
 
       /*Should return to a different view after data has successfully been inserted. This is
       just for now.*/
-      return view('pages.ratings');
+      return view('pages.welcome');
     }
 }
 

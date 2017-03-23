@@ -23,7 +23,9 @@
       <header class="row">
 
       </header>
-
+      <?php
+      $rating_id = $_GET['id'];
+      ?>
       <form id="ratings-form" enctype="multipart/form-data" class="form-horizontal" role="form" method="POST" action="{{ route('insertrating') }}">
                       {{ csrf_field() }} <!-- this is needed to post form, do not delete -->
       <div class="stars stars-example-css">
@@ -41,7 +43,7 @@
         <p>Comment:</p>
         <textarea rows="5" cols="40" name="comment" form="ratings-form">comment</textarea>
         </div>
-
+        <input type = "hidden" value = <?=$rating_id?> name = "rating_id">
         <input type="submit" value="Submit" class="btn btn-primary">
       </form>
 

@@ -28,14 +28,18 @@ class ProfileController extends Controller
 
     	// fetch user information from id
     	$user = DB::table('users')->where('id', $user_id)->first();
+      $all_ratings = DB::select(DB::raw("SELECT driverRating FROM rating"));
 
-    	return view('pages.profile', 
+
+
+    	return view('pages.profile',
     		[
     			'name' => $user->name,
     			'bio' => $user->bio,
     			'location' => $user->location,
                 'user_id' => $user_id,
                 'avatar' => $user->avatar,
+                'all_ratings' => $all_ratings,
                 'updated' => false // account was not just updated
     		]);
     }

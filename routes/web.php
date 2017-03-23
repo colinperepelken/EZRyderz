@@ -42,9 +42,8 @@ Route::post('/profile', ['as' => 'profile', 'uses' => 'ProfileController@update'
 Route::post('/insertcarinformation', 'InputCarInfoController@submit');
 
 // Request Controller
-Route::get('/sendrequest', array('as' => 'requestSt', 'uses' => 'RequestController@getId'));
-Route::post('/request', array('as' => 'request', 'uses' => 'RequestController@sendMessage'));
-Route::get('/test', 'PagesController@test'); 
+Route::get('/sendrequest', array('as' => 'requestStart', 'uses' => 'RequestController@getId'));
+Route::post('/request', ['as' => 'request', 'uses' => 'RequestController@sendMessage']);
 
 Auth::routes();
 

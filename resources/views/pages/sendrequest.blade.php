@@ -14,21 +14,20 @@
 <!-- HTML Form-->
 <body>
 @if (!isset($status)) <!-- Choose Driver or Rider-->
-  <form method="get" action="{{ route('requestSt') }}">
+  <form method="get" action="{{ route('requestStart') }}">
     <legend>What are you doing?</legend>
-    <input type="radio" name="status" value="rider"> Asking for a ride.<br>
-    <input type="radio" name="status" value="driver"> Offering to be users Driver.<br>
+    <input type="radio" name="status" value="rider"> Ask a rider to join you.<br>
+    <input type="radio" name="status" value="driver"> Ask a driver to join you.<br>
     <input type="submit" value="Next">
   </form>
 @else
   <form method="post" action="{{ route('request') }}">
-    {{ csrf_field() }}
     <!--Include ID and rider/driver status for future use as hidden fields-->
     <input type="hidden" name="senderID" value= "{{ $id }}"> 
-    <input type="hidden" name="status" value= "{{ $status }}">  
+    <input type="hidden" name="target" value= "{{ $status }}">  
 
     <div class="request-form-subject">
-      <strong> Subject* </strong>
+      <strong> Subject </strong>
       <input class="form-control" id="subject" name="subject" type="text"/>
     </div>
        

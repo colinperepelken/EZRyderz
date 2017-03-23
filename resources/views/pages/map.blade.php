@@ -47,8 +47,28 @@
             <ul>
                 <li id="pickup">Pickup address:</li>
                 <li><a id="profile-link" href=""></a></li>
-                <li><button id="add-to-group" type="button">Add to Ride Group</button></li>
+                <li>
+                    <form role="form" method="POST" action="{{ route('map-add-rider') }}">
+                        {{ csrf_field() }}
+                        <input type="hidden" value="{{ $offer_id }}" name="offer_id">
+                        <input type="hidden" value="{{ Auth::user()->id }}" name="driver_id">
+                        <input type="hidden" id="carpooler_id" value="" name="carpooler_id">
+                        <button id="add-to-group" type="submit">Add to Ride Group</button>
+                    </form>
+                </li>
             </ul>
+        </div>
+        <div id="ride-group">
+            <h3 id="ride-group-name">My Ride Group</h3>
+            @if (isset($riders_info))
+                <ul>
+                @foreach ($riders_info as $rider)
+                    <li>{{ $rider['name'] }}</li>
+                @endforeach
+                </ul>
+            @else
+                <p>Add a rider to your ride group!</p>
+            @endif
         </div>
         <script async defer
            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDciWiHhZjf-Aw0St4wFcpo6-oywp_A2Xw&callback=initMap">

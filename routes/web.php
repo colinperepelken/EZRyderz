@@ -63,3 +63,8 @@ Route::get('/home', 'HomeController@index');
 Route::get('/map', 'MapController@show'); // show the map
 Route::post('/mapshow', ['as' => 'mapshow', 'uses' => 'MapController@show']); // send the map a specific ride offer to show
 Route::post('/map', ['as' => 'map-cancel', 'uses' => 'MapController@cancelOffer']); // cancel the ride offer
+Route::post('/map-add-rider', ['as' => 'map-add-rider', 'uses' => 'MapController@addRider']); // cancel the ride offer
+
+// Request Controller
+Route::get('/sendrequest', array('as' => 'requestStart', 'uses' => 'RequestController@getId'));
+Route::post('/request', ['as' => 'request', 'uses' => 'RequestController@sendMessage']);

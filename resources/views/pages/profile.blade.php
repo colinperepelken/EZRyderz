@@ -26,7 +26,26 @@
                 <p>Bio:</p>
                 <textarea name="bio" readonly>{{ $bio }}</textarea>
                 <p>Location: {{ $location }}</p>
-                <a href='ratings'>Rate As Driver</a><br>
+
+
+
+                <?php
+                $sum = 0;
+                $count = 0;
+                $rating_id = $_GET['id'];
+                $driver_ratings = DB::select(DB::raw("SELECT driverRating FROM rating WHERE userId = $rating_id"));
+                foreach ($driver_ratings as $rating){
+                  $rate= $rating->driverRating;
+                  $sum = $sum + $rate;
+                  $count++;
+                }
+              if ($count!=0){
+                $average = $sum/$count;
+                $average =  round($average,2);
+                echo "<p>Average Rating as Driver: $average / 5</p><br>";
+              }
+                ?>
+                <a href='ratings?id=<?=urlencode($rating_id);?>'>Rate As Driver</a><br>
             @else
                 @if ($updated)
                     <div id="update success" style="background-color: #66ff66; width: 135px;"> <!-- TODO: make this look nicer... also shouldn't be inline CSS, put in the sheet -->

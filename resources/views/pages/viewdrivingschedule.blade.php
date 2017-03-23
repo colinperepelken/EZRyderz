@@ -30,7 +30,7 @@
             echo "<strong>Starting Address: </strong>".$driver->start_address."<br>
             <strong>Destination Address: </strong>".$driver->destination_address."<br>
             <strong>Maximum Deviation Off Route: </strong>".$driver->max_deviation." meters<br>
-            <strong>Departure Time: </strong>".$driver->arrival_time."<br>
+            <strong>Arrival Time: </strong>".$driver->arrival_time."<br>
             <strong>Return Time: </strong>".$driver->end_time."<br>";
           }
           ?>

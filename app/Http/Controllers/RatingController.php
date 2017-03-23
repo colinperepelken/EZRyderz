@@ -1,13 +1,57 @@
 <?php
-
 namespace ezryderz\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use DB;
+
+class RatingController extends Controller{
+    public function submit(Request $req){
+      if (Auth::Check()) {
+    		$user_id = Auth::user()->id;
+    	} else if (!isset($user_id)) {
+    		return view('auth.login'); // if user is not logged in, redirect to login page
+    	}
+
+      $value = array('driverRating' => $req->Drating,'commentASdriver' => $req->comment, 'userId' => $req->rating_id);
+      DB::table('rating')->insert($value);
+
+      /*Should return to a different view after data has successfully been inserted. This is
+      just for now.*/
+      return view('pages.welcome');
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*namespace ezryderz\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use DB;
 use Image; // for the profile image
 
-class ProfileController extends Controller
+class RatingsController extends Controller
 {
 
     public function show(Request $request)
@@ -27,19 +71,16 @@ class ProfileController extends Controller
         }
 
     	// fetch user information from id
-    	$user = DB::table('users')->where('id', $user_id)->first();
-      $all_ratings = DB::select(DB::raw("SELECT driverRating FROM rating"));
+    	$rating = DB::table('rating')->where('id', $rating_id)->first();
 
-
-
-    	return view('pages.profile',
+    	return view('pages.rating',
     		[
-    			'name' => $user->name,
-    			'bio' => $user->bio,
-    			'location' => $user->location,
+    			'driverRating' => $rating->DRvalue,
+          'passengerRating' => $rating->PRvalue,
+    			'commentASpassenger' => $rating->CasPvalue,
+    			'commentASdriver' => $rating->CasDvalue,
                 'user_id' => $user_id,
                 'avatar' => $user->avatar,
-                'all_ratings' => $all_ratings,
                 'updated' => false // account was not just updated
     		]);
     }
@@ -55,21 +96,12 @@ class ProfileController extends Controller
             $location = $request->input('location');
 
             // fetch user information from id
-            $user = DB::table('users')->where('id', $user_id)->first();
-
-            // handle the user upload of avatar
-            if ($request->hasFile('avatar')) {
-                $avatar = $request->file('avatar');
-                $filename = time() . '.' . $avatar->getClientOriginalExtension();
-                Image::make($avatar)->resize(300, 300)->save(public_path('/uploads/avatars/' . $filename));
-            } else {
-                $filename = $user->avatar; // use the current filename
-            }
+            $user = DB::table('ratings')->where('id', $user_id)->first();
 
             // update database info
-            DB::table('users')->where('id', $user_id)->update(['bio' => $bio, 'location' => $location, 'avatar' => $filename]);
+            DB::table('rating')->where('id', $user_id)->update(['bio' => $bio, 'location' => $location, 'avatar' => $filename]);
 
-            return view('pages.profile',
+            return view('pages.ratings',
                 [
                     'name' => $user->name,
                     'bio' => $bio,

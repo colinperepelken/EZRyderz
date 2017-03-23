@@ -15,6 +15,7 @@
         <h2>{{ $subject }}</h2>
         <p>Message: {{ $msg }}</p>
         <p>Address: {{ $address }}. Time: {{ $time }}</p>
+        <p>Sender ID: {{ $sender_id }}. Receiver ID: {{ $receiver_id }}</p>
 </body>
 
 @endsection

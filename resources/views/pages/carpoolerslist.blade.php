@@ -22,8 +22,9 @@
                 <?php $id = $carpooler->user_id; ?>
                 <img src="/uploads/avatars/{{ $avatar }}" style="width:32px; height:32px; position:relative;">
                 <strong>{{ $carpooler->name }}</strong>
-                <a href="viewcarpoolingschedule?id=<?=urlencode($carpooler->user_id);?>"><strong>Schedule</strong></a>
-                <a href="profile?id=<?=$id?>">Profile</a><br>
+                <a href="viewcarpoolingschedule?id=<?=urlencode($carpooler->user_id);?>">   Schedule</a>
+                <a href="profile?id=<?=$id?>">   Profile</a>
+                <a href="sendrequest?receiver_id=<?=urlencode($carpooler->user_id);?>">   Send Request</a> <br>
               </div>
             </div>
           </div>

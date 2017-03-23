@@ -60,11 +60,6 @@ class PagesController extends Controller
         return view('pages.profile', ['all_ratings' => $all_ratings]);
     }
 
-
-
-
-
-
     /*
       Retreives list of all drivers from database
     } */

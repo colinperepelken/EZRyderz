@@ -24,6 +24,7 @@
                 <strong>{{ $driver->name }}</strong>
                 <a href="viewdrivingschedule?id=<?=urlencode($driver->user_id);?>"><strong>Schedule</strong></a>
                 <a href="profile?id=<?=$id?>">Profile</a>
+                <a href='viewcarinformation?id=<?=urlencode($driver->user_id);?>'><strong>Car Information</strong></a><br>
 
                 <?php if (isset($all_mine) && $all_mine): ?>
                   <form style="display:inline;" method="post" action="{{ route('mapshow') }}">

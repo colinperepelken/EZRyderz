@@ -61,7 +61,8 @@ class MapController extends Controller
 			'driver_start' => $driver_start,
 			'driver_end' => $driver_end,
 			'driver_start_address' => $driver_start_address,
-			'driver_end_address' => $driver_end_address
+			'driver_end_address' => $driver_end_address,
+			'offer_id' => $offer_id
 		]); // return the map view
     }
 
@@ -70,6 +71,9 @@ class MapController extends Controller
      * Cancels the ride offer.
      */
     public function cancelOffer(Request $request) {
-    	echo $request->offer_id;
+    	$offer_id = $request->offer_id;
+
+    	DB::table('ride_offers')->where('offer_id', $offer_id)->delete(); // delete from DB
+    	return view('pages.welcome'); // re direct to home after delete
     }
 }

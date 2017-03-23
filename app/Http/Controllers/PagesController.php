@@ -37,6 +37,15 @@ class PagesController extends Controller
       return view('pages.viewcarpoolingschedule');
     }
 
+    public function sendrequest(){
+      return view('pages.sendrequest');
+    }
+
+    public function test()
+    {
+      return view('pages.test');
+    }
+
     /*
       Retreives list of all drivers from database
     } */

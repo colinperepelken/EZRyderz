@@ -1,71 +1,54 @@
-@section('content')
+@extends('layouts.app')
 
+@section('content')
+<!DOCTYPE html>
+<html lang="{{ config('app.locale') }}">
 <head lang = "en">
   <meta charset = "utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" /> 
   <link rel="stylesheet" href="<?php echo asset('css/all.css')?>" type="text/css">
   <title>Send Request</title>
 </head>
 
-
 <!-- HTML Form-->
-<div class="bootstrap-iso">
- <div class="container-fluid">
-  <div class="row">
-   <div class="col-md-6 col-sm-6 col-xs-12">
-    <form method="post">
-     <div class="form-group ">
-      <label class="control-label requiredField" for="subject">
-       Subject
-       <span class="asteriskField">
-        *
-       </span>
-      </label>
+<body>
+@if (!isset($status)) <!-- Choose Driver or Rider-->
+  <form method="get" action="{{ route('requestSt') }}">
+    <legend>What are you doing?</legend>
+    <input type="radio" name="status" value="rider"> Asking for a ride.<br>
+    <input type="radio" name="status" value="driver"> Offering to be users Driver.<br>
+    <input type="submit" value="Next">
+  </form>
+@else
+  <form method="post" action="{{ route('request') }}">
+    {{ csrf_field() }}
+    <!--Include ID and rider/driver status for future use as hidden fields-->
+    <input type="hidden" name="senderID" value= "{{ $id }}"> 
+    <input type="hidden" name="status" value= "{{ $status }}">  
+
+    <div class="request-form-subject">
+      <strong> Subject* </strong>
       <input class="form-control" id="subject" name="subject" type="text"/>
-     </div>
-     <div class="form-group ">
-      <label class="control-label " for="message">
-       Message
-      </label>
+    </div>
+       
+    <div class="request-form-message">
+      <strong> Message </strong>
       <textarea class="form-control" cols="40" id="message" name="message" rows="10"></textarea>
-      <span class="help-block" id="hint_message">
-       Message sent to driver
-      </span>
-     </div>
-     <div class="form-group" id="div_checkbox">
-      <label class="control-label requiredField" for="checkbox">
-       Send Schedule Information?
-       <span class="asteriskField">
-        *
-       </span>
-      </label>
-      <div class=" ">
-       <label class="checkbox-inline">
-        <input name="checkbox" type="checkbox" value="Yes"/>
-        Yes
-       </label>
-       <label class="checkbox-inline">
-        <input name="checkbox" type="checkbox" value="No"/>
-        No
-       </label>
-       <span class="help-block" id="hint_checkbox">
-        Checking yes will send the information you have included in your schedule (Time + Location)
-       </span>
-      </div>
-     </div>
-     <div class="form-group">
-      <div>
-       <button class="btn btn-primary " name="submit" type="submit">
-        Submit
-       </button>
-      </div>
-     </div>
-    </form>
-   </div>
-  </div>
- </div>
-</div>
+      <span class="help-block"> Message sent to {{ $status }} </span>
+    </div>
+       
+    <div class="request-form-sendinfo">
+      <strong> Send Schedule Information? </strong> <br>
+      <input name="infoOpt" type="radio" value="yes"/> Yes 
+      <input name="infoOpt" type="radio" value="no"/> No <br>
+      <span class="help-block"> Include information from your schedule (Time + Location) </span>
+    </div>
+    
+    <input type="submit" value="Submit"/>
+  </form>
+</body>
+</html>
+@endif
 @endsection
 

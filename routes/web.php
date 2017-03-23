@@ -28,6 +28,8 @@ Route::get('/viewdrivingschedule', 'PagesController@viewdrivingschedule'); // vi
 
 Route::get('/viewcarpoolingschedule', 'PagesController@viewcarpoolingschedule'); // view the schedule of a user requesting a ride
 
+Route::get('/compatibledrivers', array('as' => 'compatibledrivers', 'uses' => 'PagesController@compatibledrivers')); // view a list of compatible drivers for a carpooler's specific ride request
+
 Route::get('/driverslist', array('as' => 'driverslist', 'uses' => 'PagesController@driverslist')); // view list of people offering a ride
 
 Route::get('/carpoolerslist', array('as' =>'carpoolerslist', 'uses' => 'PagesController@carpoolerslist')); // view list of people requesting a ride

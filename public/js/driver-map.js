@@ -52,6 +52,7 @@ function initMap() {
                 document.getElementById('profile-link').href = "/profile?id=" + this.id;
                 document.getElementById('profile-link').innerHTML = this.label + "'s Profile";
                 document.getElementById('add-to-group').style.display = "inline";
+                document.getElementById('carpooler_id').value = this.id;
 
             });
         }

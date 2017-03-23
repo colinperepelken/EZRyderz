@@ -32,6 +32,20 @@ class MapController extends Controller
     	$driver_end = array('lat' => $driver_end_location->getLatitude(), 'long' => $driver_end_location->getLongitude());
 
 
+    	// fetch ride group
+    	$riders = DB::table('ride_groups')->where('offer_id', $offer_id)->get();
+    	$riders_info = [];
+    	foreach ($riders as $rider) {
+
+    		$rider_info = DB::table('users')->where('id', $rider->carpooler_id)->first();
+
+    		array_push($riders_info, array(
+    			'name' => $rider_info->name,
+    			'id' => $rider->carpooler_id
+    		));
+    		echo $riders_info[0]['name'];
+    	}
+
     	// fetch all ride requests
     	$ride_requests = DB::table('ride_requests')->get();
 
@@ -62,10 +76,29 @@ class MapController extends Controller
 			'driver_end' => $driver_end,
 			'driver_start_address' => $driver_start_address,
 			'driver_end_address' => $driver_end_address,
+			'riders_info' => $riders_info, // send ride group riders
 			'offer_id' => $offer_id
 		]); // return the map view
     }
 
+    /*
+     * Add a rider to the ride group.
+     */
+    public function addRider(Request $request) {
+    	$offer_id = $request->offer_id;
+    	$driver_id = $request->driver_id;
+    	$carpooler_id = $request->carpooler_id;
+
+    	DB::table('ride_groups')->insert( // insert into ride group
+ 	   		[
+ 	   			'offer_id' => $offer_id,
+ 	   			'driver_id' => $driver_id,
+ 	   			'carpooler_id' => $carpooler_id
+    		]
+    	);
+
+    	return view('pages.welcome');
+    }
 
     /*
      * Cancels the ride offer.

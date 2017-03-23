@@ -32,6 +32,11 @@ Route::get('/driverslist', array('as' => 'driverslist', 'uses' => 'PagesControll
 
 Route::get('/carpoolerslist', array('as' =>'carpoolerslist', 'uses' => 'PagesController@carpoolerslist')); // view list of people requesting a ride
 
+// view my ride requests or my ride offers
+Route::get('/myoffers', ['as' => 'myoffers', 'uses' => 'PagesController@myoffers']);
+Route::get('/myrequests', ['as' => 'myrequests', 'uses' => 'PagesController@myrequests']);
+
+
 // Schedule Controller
 Route::get('/schedule/{status?}', array('as' => 'schedule', 'uses' => 'ScheduleController@show'));
 Route::post('/schedule', ['as' => 'schedule', 'uses' => 'ScheduleController@submit']);
@@ -43,8 +48,16 @@ Route::post('/profile', ['as' => 'profile', 'uses' => 'ProfileController@update'
 // send user's "car information" input to database
 Route::post('/insertcarinformation', 'InputCarInfoController@submit');
 
+Route::get('/sendrequest', 'PagesController@sendrequest'); //Request form
+
 
 Auth::routes();
 
 // Home
 Route::get('/home', 'HomeController@index');
+
+
+// GOOGLE MAPS
+Route::get('/map', 'MapController@show'); // show the map
+Route::post('/mapshow', ['as' => 'mapshow', 'uses' => 'MapController@show']); // send the map a specific ride offer to show
+Route::post('/map', ['as' => 'map-cancel', 'uses' => 'MapController@cancelOffer']); // cancel the ride offer

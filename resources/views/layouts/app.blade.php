@@ -75,6 +75,12 @@
                                         <a href="{{ route('carpoolerslist') }}"><i class="fa fa-btn fa-user"></i>Ride Requests</a>
                                     </li>
                                     <li>
+                                        <a href="{{ route('myoffers') }}"><i class="fa fa-btn fa-user"></i>My Offers</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('myrequests') }}"><i class="fa fa-btn fa-user"></i>My Requests</a>
+                                    </li>
+                                    <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

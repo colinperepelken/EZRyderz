@@ -29,6 +29,7 @@
     25 => 'ezryderz\\Providers\\EventServiceProvider',
     26 => 'ezryderz\\Providers\\RouteServiceProvider',
     27 => 'Intervention\\Image\\ImageServiceProvider',
+    28 => 'Cornford\\Googlmapper\\MapperServiceProvider',
   ),
   'eager' => 
   array (
@@ -47,6 +48,7 @@
     12 => 'ezryderz\\Providers\\EventServiceProvider',
     13 => 'ezryderz\\Providers\\RouteServiceProvider',
     14 => 'Intervention\\Image\\ImageServiceProvider',
+    15 => 'Cornford\\Googlmapper\\MapperServiceProvider',
   ),
   'deferred' => 
   array (

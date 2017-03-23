@@ -26,7 +26,7 @@
         <title>Map</title>
     </head>
     <body>    
- 		<h2>Viewing Your Ride Offer</h2>
+ 		<h2 id="map-heading">Viewing Your Ride Offer</h2>
  		<div id="map">
             <!-- MAP WILL BE RENDERED HERE -->
         </div>

@@ -239,3 +239,7 @@ div input {
 #add-to-group {
 	display: none;
 }
+
+#map-heading {
+	margin-left: 10em;
+}

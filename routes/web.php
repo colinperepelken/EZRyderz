@@ -57,4 +57,5 @@ Route::get('/home', 'HomeController@index');
 
 // GOOGLE MAPS
 Route::get('/map', 'MapController@show'); // show the map
+Route::post('/mapshow', ['as' => 'mapshow', 'uses' => 'MapController@show']); // send the map a specific ride offer to show
 Route::post('/map', ['as' => 'map-cancel', 'uses' => 'MapController@cancelOffer']); // cancel the ride offer

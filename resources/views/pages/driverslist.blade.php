@@ -26,7 +26,9 @@
                 <a href="profile?id=<?=$id?>">Profile</a>
 
                 <?php if (isset($all_mine) && $all_mine): ?>
-                  <form style="display:inline;" method="get" action="map">
+                  <form style="display:inline;" method="post" action="{{ route('mapshow') }}">
+                    {{ csrf_field() }} <!-- this is needed to post form, do not delete -->
+                    <input type="hidden" name="offer_id" value="<?=$driver->offer_id?>">
                     <button type="submit">View Details</button>
                   </form>
                   <form style="display:inline;" method="get" action="">

@@ -26,7 +26,8 @@
                 <a href="profile?id=<?=$id?>">Profile</a>
 
                 <?php if (isset($all_mine) && $all_mine): ?>
-                  <form style="display:inline;" method="get" action="map">
+                  <form style="display:inline;" method="get" action="{{ route('map') }}">
+                    <input type="hidden" name="offer_id" value=""> <!-- this will not work on this page... see driverslist.blade.php -->
                     <button type="submit">View Details</button>
                   </form>
                   <form style="display:inline;" method="get" action="">

@@ -11,15 +11,21 @@ class MapController extends Controller
 	/*
 	 * Simple function to show a basic test map.
 	 */
-    public function show() {
+    public function show(Request $request) {
 
-    	// TODO: set via request info
-    	$driver_start_address = "432 Quilchena Drive, Kelowna, BC";
-    	$driver_end_address = "University of British Columbia Okanagan";
+    	// get info from request
+    	$offer_id = $request->offer_id;
+
+    	// query DB for ride offer info
+    	$ride_offer = DB::table('ride_offers')->where('offer_id', $offer_id)->first();
+
+    	// set via offer info
+    	$driver_start_address = $ride_offer->start_address;
+    	$driver_end_address = $ride_offer->destination_address;
 
     	// get location objects
-    	$driver_start_location = Mapper::location("432 Quilchena Drive, Kelowna, BC");
-    	$driver_end_location = Mapper::location("University of British Columbia Okanagan");
+    	$driver_start_location = Mapper::location($driver_start_address);
+    	$driver_end_location = Mapper::location($driver_end_address);
 
     	// get lat and long
     	$driver_start = array('lat' => $driver_start_location->getLatitude(), 'long' => $driver_start_location->getLongitude());

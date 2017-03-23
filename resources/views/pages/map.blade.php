@@ -20,6 +20,7 @@
             var driverEndLat = {{ $driver_end['lat'] }};
             var driverEndLong = {{ $driver_end['long'] }};
             var rideRequests = <?php echo json_encode($ride_requests); ?>;
+            var carpooler_positions = <?php echo json_encode($carpooler_positions); ?>
 
         </script>
         <script type="text/javascript" src="../js/driver-map.js"></script>

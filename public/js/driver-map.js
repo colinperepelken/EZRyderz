@@ -28,9 +28,12 @@ function initMap() {
 
         // carpooler pickup maerkers
         var carpoolerMarkers = [];
-        for (var i = 0; i < rideRequests.size(); i++) {
-        	carpoolerMarkers.push(new google.maps.Marker({
-        		position: new google.maps.LatLng(rideRequests[i].start_address)
+        for (var i = 0; i < carpooler_positions.length; i++) {
+        	carpooler_positions.push(new google.maps.Marker({
+        		position: new google.maps.LatLng(carpooler_positions[i]['lat'], carpooler_positions[i]['long']),
+        		title: "carpooler" + i,
+        		label: "Carpooler " + i,
+        		map: map
         	}));
         }
 

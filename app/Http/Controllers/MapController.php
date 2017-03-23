@@ -26,11 +26,11 @@ class MapController extends Controller
 
     	// store lat and long of ride requests for ease of use of API
     	$carpooler_positions = [];
-    	for ($ride_requests as $ride_request) {
+    	foreach ($ride_requests as $ride_request) {
     		array_push($carpooler_positions, array(
     			'lat' => Mapper::location($ride_request->start_address)->getLatitude(), 
     			'long' => Mapper::location($ride_request->start_address)->getLongitude()
-    			));
+    		));
     	}
 
 

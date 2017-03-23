@@ -106,5 +106,8 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="../js/jquery-1.11.2.min.js"></script>
+    <script src="../js/jquery.barrating.min.js"></script>
+    <script src="../js/examples.js"></script>
 </body>
 </html>

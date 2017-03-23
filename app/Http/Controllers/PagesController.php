@@ -42,6 +42,10 @@ class PagesController extends Controller
     {
       return view('pages.viewcarpoolingschedule');
     }
+    public function ratings()
+    {
+      return view('pages.ratings');
+    }
 
     /*
       Retreives list of all drivers from database

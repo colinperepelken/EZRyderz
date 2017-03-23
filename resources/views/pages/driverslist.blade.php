@@ -16,24 +16,26 @@
         <div class="panel-heading"><?php if (isset($all_mine) && $all_mine == true){ echo 'My Ride Offers'; }else{ echo 'All Users Offering a Ride';} ?>
           <div class="panel-body">
             <div class="col-md-6">
-              <?php
-                foreach ($all_drivers as $driver) {
-                  $avatar = $driver->avatar;
-                  $id = $driver->user_id;
-                  echo "<img src=\"/uploads/avatars/$avatar\" style=\"width:32px; height:32px; position:relative;\"><strong>".$driver->name."</strong>
-                  <a href='viewdrivingschedule?id=".urlencode($driver->user_id)."'><strong>Schedule</strong></a> <a href='profile?id=$id'>Profile</a>";
 
+              <?php foreach ($all_drivers as $driver): ?>
+                <?php $avatar = $driver->avatar; ?>
+                <?php $id = $driver->user_id; ?>
+                <img src="/uploads/avatars/{{ $avatar }}" style="width:32px; height:32px; position:relative;">
+                <strong>{{ $driver->name }}</strong>
+                <a href="viewdrivingschedule?id=<?=urlencode($driver->user_id);?>"><strong>Schedule</strong></a>
+                <a href="profile?id=<?=$id?>">Profile</a>
 
-                  if (isset($all_mine) && $all_mine == true) {
-                    echo '<form style="display:inline;" method="get" action="map">';
-                    echo '<button type="submit">View Details</button></form>';
-                    echo '<form style="display:inline;" method="get" action="">';
-                    echo '<button type="submit">Cancel</button></form>';
-                  }
+                <?php if (isset($all_mine) && $all_mine): ?>
+                  <form style="display:inline;" method="get" action="map">
+                    <button type="submit">View Details</button>
+                  </form>
+                  <form style="display:inline;" method="get" action="">
+                    <button type="submit">Cancel</button>
+                  </form>
+                <?php endif ?>
+                <br>
+              <?php endforeach ?>
 
-                  echo "<br>";
-                }
-              ?>
             </div>
           </div>
         </div>

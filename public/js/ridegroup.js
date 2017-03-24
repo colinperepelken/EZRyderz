@@ -1,7 +1,6 @@
 
 
 
-var isDriver = false;
 var driverStartLat;
 var driverStartLong;
 var driverEndLat;
@@ -9,7 +8,6 @@ var driverEndLong;
 var carpooler_info;
 
 function updateDriverMap(index) {
-	isDriver = true;
     driverStartLat = driver_groups[index]['driver_start']['lat'];
     driverStartLong = driver_groups[index]['driver_start']['long'];
     driverEndLat = driver_groups[index]['driver_end']['lat'];
@@ -19,11 +17,10 @@ function updateDriverMap(index) {
 }
 
 function updateRiderMap(index) {
-	isDriver = false;
-    driverStartLat = driver_groups[index]['driver_start']['lat'];
-    driverStartLong = driver_groups[index]['driver_start']['long'];
-    driverEndLat = driver_groups[index]['driver_end']['lat'];
-    driverEndLong = driver_groups[index]['driver_end']['long'];
+    driverStartLat = rider_groups[index]['driver_start']['lat'];
+    driverStartLong = rider_groups[index]['driver_start']['long'];
+    driverEndLat = rider_groups[index]['driver_end']['lat'];
+    driverEndLong = rider_groups[index]['driver_end']['long'];
    	carpooler_info = []; // empty... no carpoolers on map
     initMap();
 }

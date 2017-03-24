@@ -207,7 +207,7 @@ class MapController extends Controller
             $driver_start = array('lat' => $driver_start_location->getLatitude(), 'long' => $driver_start_location->getLongitude());
             $driver_end = array('lat' => $driver_end_location->getLatitude(), 'long' => $driver_end_location->getLongitude());
 
-                    // fetch ride group
+            // fetch ride group
             $riders = DB::table('ride_groups')->where('offer_id', $group->offer_id)->get();
             $riders_info = [];
             foreach ($riders as $rider) {
@@ -220,7 +220,10 @@ class MapController extends Controller
                 ));
             }
 
-            arr_push($rider_groups_arr, [
+            // TODO: get rider start address and use instead of driver start address for map
+
+
+            array_push($rider_groups_arr, [
                 'offer_id' => $group->offer_id,
                 'driver_start' => $driver_start,
                 'driver_end' => $driver_end,

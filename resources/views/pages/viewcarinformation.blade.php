@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="<?php echo asset('css/all.css')?>" type="text/css">
-  <title>User Schedule</title>
+  <title>Car Information</title>
 </head>
 <?php
   $driver_id = $_GET["id"];

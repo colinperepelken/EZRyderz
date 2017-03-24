@@ -243,3 +243,9 @@ div input {
 #map-heading {
 	margin-left: 10em;
 }
+
+/* ADVERTISEMENTS on welcome page */
+.advertisement {
+	width: 128px;
+	height: 128px;
+}

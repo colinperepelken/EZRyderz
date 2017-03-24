@@ -69,3 +69,6 @@ Route::post('/map-add-rider', ['as' => 'map-add-rider', 'uses' => 'MapController
 // Request Controller
 Route::get('/sendrequest', array('as' => 'requestStart', 'uses' => 'RequestController@getId'));
 Route::post('/request', ['as' => 'request', 'uses' => 'RequestController@sendMessage']);
+
+// ride groups
+Route::get('/ridegroup', ['as' => 'ridegroup', 'uses' => 'MapController@ridegroup']);

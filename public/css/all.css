@@ -243,3 +243,18 @@ div input {
 #map-heading {
 	margin-left: 10em;
 }
+
+/* ADVERTISEMENTS on welcome page */
+.advertisement {
+	width: 128px;
+	height: 128px;
+}
+
+/* ride groups */
+#list-groups {
+	height: 400px;
+}
+
+#group-details {
+	height: 400px;
+}

@@ -249,3 +249,12 @@ div input {
 	width: 128px;
 	height: 128px;
 }
+
+/* ride groups */
+#list-groups {
+	height: 400px;
+}
+
+#group-details {
+	height: 400px;
+}

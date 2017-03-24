@@ -69,6 +69,9 @@
                                         <a href="{{ route('schedule') }}"><i class="fa fa-btn fa-user"></i>Make a Schedule</a>
                                     </li>
                                     <li>
+                                        <a href="{{ route('carinformation') }}"><i class="fa fa-btn fa-user"></i>Insert Car Information</a>
+                                    </li>
+                                    <li>
                                         <a href="{{ route('driverslist') }}"><i class="fa fa-btn fa-user"></i>Ride Offers</a>
                                     </li>
                                     <li>

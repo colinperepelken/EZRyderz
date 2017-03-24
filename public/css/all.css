@@ -121,6 +121,11 @@ div input {
 	margin:0.5em;
 }
 
+/*The following is css for the receivedrequests page */
+.receivedrequests-content {
+	word-break:break-all;
+}
+
 
 /*The following is css for the welcome page*/
 .wrapper {

@@ -13,30 +13,29 @@
 
 <!-- HTML Form-->
 <body>
-@if (!isset($status)) <!-- Choose Driver or Rider-->
+@if (!isset($request_id)) <!-- Choose Driver or Rider-->
   <form method="get" action="{{ route('requestStart') }}">
-    <legend>What are you doing?</legend>
-    <input type="radio" name="status" value="rider"> Ask a rider to join you.<br>
-    <input type="radio" name="status" value="driver"> Ask a driver to drive you.<br>
+    <legend>Which schedule would you like to send the driver?</legend>
     <input type="hidden" name="receiver_id" value= "{{ $receiver_id }}"> 
+    <input type="text" name="request_id" value= "{{ $request_id }}" placeholder="Enter schedule number."> 
     <input type="submit" value="Next">
   </form>
 @else
   <form method="post" action="{{ route('request') }}">
-    <!--Include ID and rider/driver status for future use as hidden fields-->
+    <!--Include IDs and rider/driver status for future use as hidden fields-->
     <input type="hidden" name="sender_id" value= "{{ $sender_id }}"> 
     <input type="hidden" name="receiver_id" value= "{{ $receiver_id }}"> 
-    <input type="hidden" name="target" value= "{{ $status }}">  
+    <input type="hidden" name="request_id" value= "{{ $request_id }}"> 
 
     <div class="request-form-subject">
-      <strong> Subject </strong>
+      <strong> Subject</strong>
       <input class="form-control" id="subject" name="subject" type="text"/>
     </div>
        
     <div class="request-form-message">
       <strong> Message </strong>
       <textarea class="form-control" cols="40" id="message" name="message" rows="10"></textarea>
-      <span class="help-block"> Message sent to {{ $status }} </span>
+      <span class="help-block"> Message to send to driver</span>
     </div>
        
     <div class="request-form-sendinfo">

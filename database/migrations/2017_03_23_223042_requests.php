@@ -15,12 +15,13 @@ class Requests extends Migration
     {
           Schema::create('requests', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('sender_id'); // store the driver id
-            $table->integer('receiver_id'); // store the ride offer id
-            $table->string('subject');
-            $table->string('msg');
-            $table->string('start_address');
-            $table->string('arrival_time');
+            $table->integer('sender_id'); 
+            $table->integer('receiver_id');
+            $table->integer('request_id');
+            $table->longtext('subject');
+            $table->longtext('msg');
+            $table->longtext('start_address');
+            $table->longtext('arrival_time');
             $table->timestamps();
         });
     }

@@ -70,6 +70,8 @@ Route::post('/map-add-rider', ['as' => 'map-add-rider', 'uses' => 'MapController
 Route::get('/sendrequest', array('as' => 'requestStart', 'uses' => 'RequestController@getId'));
 Route::get('/receivedrequests',array('as' => 'displayRequests', 'uses' => 'RequestController@displayRequests'));
 Route::post('/request', ['as' => 'request', 'uses' => 'RequestController@sendMessage']);
+Route::post('/receivedrequests', ['as' => 'requestAccept', 'uses' => 'RequestController@requestAccept']);
+Route::post('/requestDeclined', ['as' => 'requestDecline', 'uses' => 'RequestController@requestDecline']);
 
 // ride groups
 Route::get('/ridegroup', ['as' => 'ridegroup', 'uses' => 'MapController@ridegroup']);

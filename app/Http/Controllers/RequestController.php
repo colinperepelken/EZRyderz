@@ -56,16 +56,29 @@ class RequestController extends Controller
     			$time = "Time not sent";
     		}
 
-    		return view('pages.test', ['address' => $address,
-    								   'time' => $time,
-    								   'target' => $target,
-    								   'subject' => $subject,
-    								   'msg' => $msg,
-                                       'receiver_id' => $receiver_id,
-                                       'sender_id' => $sender_id]);
-    		
+
+            DB::table('requests')->insert(['start_address' => $address,
+                                           'arrival_time' => $time,
+                                           'subject' => $subject,
+                                           'msg' => $msg,
+                                           'receiver_id' => $receiver_id,
+                                           'sender_id' => $sender_id]);
+            
+            //Ugly inline javascript to give a confirmation alert
+            echo "<script type =\"text/javascript\">alert(\"Request successfully sent to user.\")  </script>";
+            return view('pages.welcome');
     	} else {
     		return view('auth.login'); // if user is not logged in, redirect to login page
     	}
+    }
+
+    public function displayRequests(Request $request) {
+        if (Auth::check()) {
+            $user_id = Auth::user()->id; // get the current user's id
+            $requests = DB::select(DB::raw("SELECT * FROM requests WHERE receiver_id = $user_id"));
+            return view('pages.receivedrequests', ['requests' => $requests]);
+        } else {
+            return view('auth.login'); // if user is not logged in, redirect to login page
+        }
     }
 }

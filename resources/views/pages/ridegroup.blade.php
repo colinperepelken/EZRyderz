@@ -13,11 +13,10 @@
   <script>
 
         // set JS variables from PHP here
-        var driver_groups = <?php echo json_encode($driver_groups); ?>
-        var rider_groups = <?php echo json_encode($rider_groups); ?>
+        var driver_groups = <?php echo json_encode($driver_groups); ?>;
+        var rider_groups = <?php echo json_encode($rider_groups); ?>;
 
     </script>
-  <script type="text/javascript" src="../js/driver-map.js"></script>
   <script type="text/javascript" src="../js/ridegroup.js"></script>
 </head>
 <body>
@@ -29,8 +28,10 @@
     		<h2>As a Driver</h2>
     		@if (isset($driver_groups))
     			<li>
+          <?php $counter = 0; ?>
 	    		@foreach ($driver_groups as $group)
-	    			<ul><button type="button" onclick="update()">{{ $group['driver_end_address'] }}</button></ul>
+	    			<ul><button type="button" onclick="updateDriverMap(<?=$counter?>)">{{ $group['driver_end_address'] }}</button></ul>
+            <?php $counter++; ?>
 	    		@endforeach
 	    		</li>
 	    	@else
@@ -39,8 +40,10 @@
 	    	<h2>As a Rider</h2>
 	    	@if (isset($rider_groups))
     			<li>
+          <?php $counter=0; ?>
 	    		@foreach ($rider_groups as $group)
-	    			<ul><button type="button" onclick="update()">{{ $group['driver_end_address'] }}</button></ul>
+	    			<ul><button type="button" onclick="updateRiderMap(<?=$counter?>)">{{ $group['driver_end_address'] }}</button></ul>
+            <?php $counter++; ?>
 	    		@endforeach
 	    		</li>
 	    	@else

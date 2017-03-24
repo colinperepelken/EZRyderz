@@ -68,4 +68,5 @@ Route::post('/map-add-rider', ['as' => 'map-add-rider', 'uses' => 'MapController
 
 // Request Controller
 Route::get('/sendrequest', array('as' => 'requestStart', 'uses' => 'RequestController@getId'));
+Route::get('/receivedrequests',array('as' => 'displayRequests', 'uses' => 'RequestController@displayRequests'));
 Route::post('/request', ['as' => 'request', 'uses' => 'RequestController@sendMessage']);

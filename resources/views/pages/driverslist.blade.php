@@ -24,8 +24,8 @@
                 <strong>{{ $driver->name }}</strong>
                 <a href="viewdrivingschedule?id=<?=urlencode($driver->user_id);?>"> Schedule</a>
                 <a href="profile?id=<?=$id?>">   Profile</a>
-                <a href='viewcarinformation?id=<?=urlencode($driver->user_id);?>'>   Car Information</a>
-                <a href="sendrequest?receiver_id=<?=urlencode($driver->user_id);?>">   Send Request</a> <br>
+                <a href="sendrequest?receiver_id=<?=urlencode($driver->user_id);?>">   Send Request</a>
+                <a href='viewcarinformation?id=<?=urlencode($driver->user_id);?>'>   Car Information</a> <br>
 
                 <?php if (isset($all_mine) && $all_mine): ?>
                   <form style="display:inline;" method="post" action="{{ route('mapshow') }}">

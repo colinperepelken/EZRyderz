@@ -20,9 +20,9 @@ Route::get('/about', 'PagesController@about'); // about page
 
 Route::get('/login', 'PagesController@login'); // login page
 
-Route::get('/carinformation', 'PagesController@carinformation'); // input car information page
+Route::get('/carinformation', ['as' => 'carinformation', 'uses' => 'PagesController@carinformation']); // input car information page
 
-Route::get('/viewcarinformation', 'PagesController@viewcarinformation'); // view the schedule of a user offering a ride
+Route::get('/viewcarinformation', ['as' => 'viewcarinformation', 'uses' => 'PagesController@viewcarinformation']); // view a user's car information
 
 Route::get('/viewdrivingschedule', 'PagesController@viewdrivingschedule'); // view the schedule of a user offering a ride
 

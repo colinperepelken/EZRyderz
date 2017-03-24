@@ -10,9 +10,10 @@
   <title>User Schedule</title>
 </head>
 <?php
-  $carpooler_id = $_GET["id"];
-  $carpoolers = DB::select(DB::raw("SELECT * FROM users, ride_requests WHERE users.id = ride_requests.user_id AND ".$carpooler_id." = users.id"));
-  $user = DB::table('users')->where('id', $carpooler_id)->first();
+  $carpooler_user_id = $_GET["id"];
+  $carpooler_request_id = $_GET["reqid"];
+  $carpoolers = DB::select(DB::raw("SELECT * FROM users, ride_requests WHERE users.id = ride_requests.user_id AND ".$carpooler_request_id." = ride_requests.request_id"));
+  $user = DB::table('users')->where('id', $carpooler_user_id)->first();
 ?>
 <div class="container">
   <div class="row">

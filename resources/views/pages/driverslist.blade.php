@@ -22,9 +22,10 @@
                 <?php $id = $driver->user_id; ?>
                 <img src="/uploads/avatars/{{ $avatar }}" style="width:32px; height:32px; position:relative;">
                 <strong>{{ $driver->name }}</strong>
-                <a href="viewdrivingschedule?id=<?=urlencode($driver->user_id);?>"><strong>Schedule</strong></a>
-                <a href="profile?id=<?=$id?>">Profile</a>
-                <a href='viewcarinformation?id=<?=urlencode($driver->user_id);?>'><strong>Car Information</strong></a><br>
+                <?php echo "<a href='viewdrivingschedule?reqid=".urlencode($driver->offer_id)."&id=".urlencode($driver->user_id)."'> Schedule </a>"; ?>
+                <a href="profile?id=<?=$id?>">   Profile</a>
+                <a href="sendrequest?receiver_id=<?=urlencode($driver->user_id);?>">   Send Request</a>
+                <a href='viewcarinformation?id=<?=urlencode($driver->user_id);?>'>   Car Information</a> <br>
 
                 <?php if (isset($all_mine) && $all_mine): ?>
                   <form style="display:inline;" method="post" action="{{ route('mapshow') }}">

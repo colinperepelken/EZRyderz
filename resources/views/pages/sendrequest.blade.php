@@ -17,13 +17,15 @@
   <form method="get" action="{{ route('requestStart') }}">
     <legend>What are you doing?</legend>
     <input type="radio" name="status" value="rider"> Ask a rider to join you.<br>
-    <input type="radio" name="status" value="driver"> Ask a driver to join you.<br>
+    <input type="radio" name="status" value="driver"> Ask a driver to drive you.<br>
+    <input type="hidden" name="receiver_id" value= "{{ $receiver_id }}"> 
     <input type="submit" value="Next">
   </form>
 @else
   <form method="post" action="{{ route('request') }}">
     <!--Include ID and rider/driver status for future use as hidden fields-->
-    <input type="hidden" name="senderID" value= "{{ $id }}"> 
+    <input type="hidden" name="sender_id" value= "{{ $sender_id }}"> 
+    <input type="hidden" name="receiver_id" value= "{{ $receiver_id }}"> 
     <input type="hidden" name="target" value= "{{ $status }}">  
 
     <div class="request-form-subject">

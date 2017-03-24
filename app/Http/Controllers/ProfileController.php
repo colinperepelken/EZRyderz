@@ -28,7 +28,7 @@ class ProfileController extends Controller
 
     	// fetch user information from id
     	$user = DB::table('users')->where('id', $user_id)->first();
-      $all_ratings = DB::select(DB::raw("SELECT driverRating FROM rating"));
+        $all_ratings = DB::select(DB::raw("SELECT driverRating FROM rating"));
 
 
 
@@ -47,9 +47,6 @@ class ProfileController extends Controller
     public function update(Request $request)
     {
         if (Auth::Check()) { // if the user is logged in
-
-
-
             $user_id = $request->input('user_id');
             $bio = $request->input('bio');
             $location = $request->input('location');

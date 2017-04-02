@@ -24,15 +24,15 @@ class InputCarInfoController extends Controller
       if (is_null($car_id)) {
         $value = array('user_id' => $user_id,'make' => $req->make, 'model' => $req->model, 'year' => $req->year,
         'licensePlate' => $req->licensePlate, 'numberOfSeats' => $req->numberOfSeats,
-        'hasAirConditioning' => $req->hasAirConditioning, 'efficiency' => $req->efficiency,
-        'efficiencyUnits' => $req->efficiencyUnits);
+        'hasAirConditioning' => $req->hasAirConditioning, 'allowSmoking' => $req->allowSmoking, 'efficiency' => $req->efficiency,
+        'efficiencyUnits' => $req->efficiencyUnits, 'fuelType' => $req->fuelType);
         $carinformation->insert($value);
       } // if something is returned, use an update statement
       else {
         $value = array('user_id' => $user_id,'make' => $req->make, 'model' => $req->model, 'year' => $req->year,
         'licensePlate' => $req->licensePlate, 'numberOfSeats' => $req->numberOfSeats,
-        'hasAirConditioning' => $req->hasAirConditioning, 'efficiency' => $req->efficiency,
-        'efficiencyUnits' => $req->efficiencyUnits);
+        'hasAirConditioning' => $req->hasAirConditioning, 'allowSmoking' => $req->allowSmoking, 'efficiency' => $req->efficiency,
+        'efficiencyUnits' => $req->efficiencyUnits, 'fuelType' => $req->fuelType);
         $carinformation->where('user_id', $user_id)->update($value);
       }
 

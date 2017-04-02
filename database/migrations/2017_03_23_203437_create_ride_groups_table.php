@@ -18,6 +18,7 @@ class CreateRideGroupsTable extends Migration
             $table->integer('driver_id'); // store the driver id
             $table->integer('offer_id'); // store the ride offer id
             $table->integer('carpooler_id'); // store the carpooler id
+            $table->integer('request_id'); // store the carpooler id
             $table->timestamps();
         });
     }

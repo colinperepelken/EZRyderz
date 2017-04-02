@@ -12,6 +12,6 @@ class VerifyCsrfToken extends BaseVerifier
      * @var array
      */
     protected $except = [
-        'request', '/request'
+        'request', '/request', 'requestAccept', '/requestAccepted', 'requestDecline', 'requestDeclined'
     ];
 }

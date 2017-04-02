@@ -20,9 +20,9 @@ Route::get('/about', 'PagesController@about'); // about page
 
 Route::get('/login', 'PagesController@login'); // login page
 
-Route::get('/carinformation', 'PagesController@carinformation'); // input car information page
+Route::get('/carinformation', ['as' => 'carinformation', 'uses' => 'PagesController@carinformation']); // input car information page
 
-Route::get('/viewcarinformation', 'PagesController@viewcarinformation'); // view the schedule of a user offering a ride
+Route::get('/viewcarinformation', ['as' => 'viewcarinformation', 'uses' => 'PagesController@viewcarinformation']); // view a user's car information
 
 Route::get('/viewdrivingschedule', 'PagesController@viewdrivingschedule'); // view the schedule of a user offering a ride
 
@@ -38,7 +38,6 @@ Route::get('/carpoolerslist', array('as' =>'carpoolerslist', 'uses' => 'PagesCon
 Route::get('/myoffers', ['as' => 'myoffers', 'uses' => 'PagesController@myoffers']);
 Route::get('/myrequests', ['as' => 'myrequests', 'uses' => 'PagesController@myrequests']);
 
-
 // Schedule Controller
 Route::get('/schedule/{status?}', array('as' => 'schedule', 'uses' => 'ScheduleController@show'));
 Route::post('/schedule', ['as' => 'schedule', 'uses' => 'ScheduleController@submit']);
@@ -52,19 +51,14 @@ Route::post('/insertcarinformation', 'InputCarInfoController@submit');
 
 Route::get('/sendrequest', 'PagesController@sendrequest'); //Request form
 
-
-
 //Ratings
 Route::get('/ratings', 'PagesController@ratings');
 Route::post('/insertrating', ['as' => 'insertrating', 'uses' => 'RatingController@submit']);
-
-
 
 Auth::routes();
 
 // Home
 Route::get('/home', 'HomeController@index');
-
 
 // GOOGLE MAPS
 Route::get('/map', 'MapController@show'); // show the map
@@ -74,4 +68,10 @@ Route::post('/map-add-rider', ['as' => 'map-add-rider', 'uses' => 'MapController
 
 // Request Controller
 Route::get('/sendrequest', array('as' => 'requestStart', 'uses' => 'RequestController@getId'));
+Route::get('/receivedrequests',array('as' => 'displayRequests', 'uses' => 'RequestController@displayRequests'));
 Route::post('/request', ['as' => 'request', 'uses' => 'RequestController@sendMessage']);
+Route::post('/receivedrequests', ['as' => 'requestAccept', 'uses' => 'RequestController@requestAccept']);
+Route::post('/requestDeclined', ['as' => 'requestDecline', 'uses' => 'RequestController@requestDecline']);
+
+// ride groups
+Route::get('/ridegroup', ['as' => 'ridegroup', 'uses' => 'MapController@ridegroup']);

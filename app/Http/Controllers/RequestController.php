@@ -13,9 +13,11 @@ class RequestController extends Controller
 		if (Auth::check()) { // check if user is logged in
     		$sender_id = Auth::user()->id; // get the current user's id
             $receiver_id = $_GET['receiver_id']; //Get the id of the person you are sending a request too
+            $offer_id = $_GET['offer_id']; //Get the id of the persons offer
             $request_id = $request->input('request_id'); //Send the specific request
     		return view('pages.sendrequest', ['sender_id' => $sender_id, 
                                               'receiver_id' => $receiver_id,
+                                              'offer_id' => $offer_id,
                                               'request_id' => $request_id]);
     	} else {
     		return view('auth.login'); // if user is not logged in, redirect to login page
@@ -38,6 +40,7 @@ class RequestController extends Controller
             $sender_id = $request->input('sender_id'); 
             $receiver_id = $request->input('receiver_id');
             $request_id = $request->input('request_id');
+            $offer_id = $request->input('offer_id');
 
     		//Check if senders info should be included
     		$check = $request->input('infoOpt'); 
@@ -63,7 +66,8 @@ class RequestController extends Controller
                                            'msg' => $msg,
                                            'receiver_id' => $receiver_id,
                                            'sender_id' => $sender_id,
-                                           'request_id' => $request_id]);
+                                           'request_id' => $request_id,
+                                           'offer_id' => $offer_id]);
             
             //Ugly inline javascript to give a confirmation alert
             echo "<script type =\"text/javascript\">alert(\"Request successfully sent to user.\")  </script>";
@@ -91,7 +95,7 @@ class RequestController extends Controller
             DB::table('requests')->where('id', '=', $request_id)->delete(); // delete from DB
             echo "<script type =\"text/javascript\">alert(\"Request successfully removed.\")  </script>";
 
-            return view('pages.welcome'); // re direct to home after delete
+            return $this-> displayRequests($request);
         } else {
             return view('auth.login'); // if user is not logged in, redirect to login page
         }
@@ -101,21 +105,26 @@ class RequestController extends Controller
     public function requestAccept(Request $request) {
         $request_id = $request->request_id;
         $driver_id = $request->driver_id;
+        $offer_id = $request->offer_id;
         $carpooler_id = $request->carpooler_id;
+
 
         DB::table('ride_groups')->insert( // insert into ride group
             [
                 'request_id' => $request_id,
                 'driver_id' => $driver_id,
+                'offer_id' => $offer_id,
                 'carpooler_id' => $carpooler_id
             ]
         );
 
-        $request_id = $request->id;
-
-            DB::table('requests')->where('id', '=', $request_id)->delete(); // delete from DB
-            echo "<script type =\"text/javascript\">alert(\"Request successfully accepted.\")  </script>";
 
         return view('pages.welcome');
+        $request_id = $request->id;
+
+        DB::table('requests')->where('id', '=', $request_id)->delete(); // delete from DB
+        echo "<script type =\"text/javascript\">alert(\"Request successfully accepted.\")  </script>";
+
+        return $this-> displayRequests($request);
     }
 }

@@ -17,6 +17,7 @@
   <form method="get" action="{{ route('requestStart') }}">
     <legend>Which schedule would you like to send the driver?</legend>
     <input type="hidden" name="receiver_id" value= "{{ $receiver_id }}"> 
+    <input type="hidden" name="offer_id" value= "{{ $offer_id }}"> 
     <input type="text" name="request_id" value= "{{ $request_id }}" placeholder="Enter schedule number."> 
     <input type="submit" value="Next">
   </form>
@@ -26,6 +27,7 @@
     <input type="hidden" name="sender_id" value= "{{ $sender_id }}"> 
     <input type="hidden" name="receiver_id" value= "{{ $receiver_id }}"> 
     <input type="hidden" name="request_id" value= "{{ $request_id }}"> 
+    <input type="hidden" name="offer_id" value= "{{ $offer_id }}"> 
 
     <div class="request-form-subject">
       <strong> Subject</strong>
@@ -33,7 +35,7 @@
     </div>
        
     <div class="request-form-message">
-      <strong> Message </strong>
+      <strong> Message</strong>
       <textarea class="form-control" cols="40" id="message" name="message" rows="10"></textarea>
       <span class="help-block"> Message to send to driver</span>
     </div>

@@ -14,7 +14,6 @@
 <body>
   <!--Check if the user has any requests, if they do display all of them-->
   @if (count($requests))
-    <?php echo"<script> alert(\"Request is set\"); </script>"; ?>
     <?php foreach ($requests as $request): ?>
       <form method="post">
         {{ csrf_field() }} 
@@ -37,6 +36,7 @@
             <input type="hidden" name="carpooler_id" value="{{ $request->sender_id }}">
             <input type="hidden" name="driver_id" value="{{ $request->receiver_id }}">
             <input type="hidden" name="id" value="{{ $request->id}}>">
+            <input type="hidden" name="offer_id" value="{{ $request->offer_id}}">
             <button type="submit">Accept Request</button>
           </form>
 
@@ -58,7 +58,7 @@
         
         <div class = "receivedrequests-content">
           <p> Remember: Users can only send you a request if you have submitted a schedule!<p>
-          <p> Would you like to do that now? <a href="{{ route('schedule') }}">Submin a schedule</a></p>
+          <p> Would you like to do that now? <a href="{{ route('schedule') }}">Submit a schedule</a></p>
         </div>
   @endif
 </body>

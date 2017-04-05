@@ -21,7 +21,6 @@
         <p><strong>Sent Information:</strong></p>
         <p>&nbsp;&nbsp;&nbsp; Pickup address: {{ $request-> start_address }}</p>
         <p>&nbsp;&nbsp;&nbsp; Required Arrival Time: {{ $request-> arrival_time }}</p>
-        <p>Sender{{ $request->sender_id }}  Receiver{{ $request->receiver_id }} Request {{ $request->request_id }}</p>
       </div>
 
       <div class = "receivedrequests-buttons">

@@ -1,10 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Create a new message</h1>
+    <!--<h1>Create a new message</h1>-->
     <form action="{{ route('messages.store') }}" method="post">
         {{ csrf_field() }}
-        <div class="col-md-6">
+        <div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="panel panel-default">
+        <div class="panel-heading"><h3>Create a new message</h3>
+          <div class="panel-body">
+            <div class="col-md-6">
             <!-- Subject Form Input -->
             <div class="form-group">
                 <label class="control-label">Subject</label>
@@ -32,5 +38,12 @@
                 <button type="submit" class="btn btn-primary form-control">Submit</button>
             </div>
         </div>
+
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
     </form>
 @stop

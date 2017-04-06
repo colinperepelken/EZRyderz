@@ -32,29 +32,29 @@ $set = 0;
                 $dbLastName = array_pop($names);
                 $dbFirstName = implode(" ", $names); ?>
 
-                <?php if ($firstName == $dbFirstName): ?>
-                  <?php if ($lastName == $dbLastName): ?>
+                <?php if (strtolower($firstName) == strtolower($dbFirstName)): ?>
+                  <?php if (strtolower($lastName) == strtolower($dbLastName)): ?>
                     <?php echo "<br>"; ?>
                     <img src="/uploads/avatars/{{ $avatar }}" style="width:32px; height:32px; position:relative;">
-                    <?php echo "<strong>".$firstName." ".$lastName."</strong>"; ?>
+                    <?php echo "<strong>".ucfirst(strtolower($firstName))." ".ucfirst(strtolower($lastName))."</strong>"; ?>
                     <a href="profile?id=<?=$id?>">   Profile</a>
                   <?php elseif ($lastName == NULL): ?>
                     <?php echo "<br>"; ?>
                     <img src="/uploads/avatars/{{ $avatar }}" style="width:32px; height:32px; position:relative;">
-                    <?php echo "<strong>".$firstName." ".$dbLastName."</strong>"; ?>
+                    <?php echo "<strong>".ucfirst(strtolower($firstName))." ".ucfirst(strtolower($dbLastName))."</strong>"; ?>
                     <a href="profile?id=<?=$id?>">   Profile</a>
                   <?php endif ?>
 
-                <?php elseif ($lastName == $dbLastName): ?>
-                  <?php if ($firstName == $dbLastName): ?>
+                <?php elseif (strtolower($lastName) == strtolower($dbLastName)): ?>
+                  <?php if (strtolower($firstName) == strtolower($dbLastName)): ?>
                     <?php echo "<br>"; ?>
                     <img src="/uploads/avatars/{{ $avatar }}" style="width:32px; height:32px; position:relative;">
-                    <?php echo "<strong>".$firstName." ".$lastName."</strong>"; ?>
+                    <?php echo "<strong>".ucfirst(strtolower($firstName))." ".ucfirst(strtolower($lastName))."</strong>"; ?>
                     <a href="profile?id=<?=$id?>">   Profile</a>
                   <?php elseif ($firstName == NULL): ?>
                     <?php echo "<br>"; ?>
                     <img src="/uploads/avatars/{{ $avatar }}" style="width:32px; height:32px; position:relative;">
-                    <?php echo "<strong>".$dbFirstName." ".$lastName."</strong>"; ?>
+                    <?php echo "<strong>".ucfirst(strtolower($dbFirstName))." ".ucfirst(strtolower($lastName))."</strong>"; ?>
                     <a href="profile?id=<?=$id?>">   Profile</a>
                   <?php endif ?>
 

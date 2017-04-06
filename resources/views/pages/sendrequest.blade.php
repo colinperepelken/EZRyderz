@@ -31,7 +31,7 @@
 
     <div class="request-form-subject">
       <strong> Subject</strong>
-      <input class="form-control" id="subject" name="subject" type="text"/>
+      <input class="form-control" id="subject" name="subject" type="text" maxlength="72"/>
     </div>
        
     <div class="request-form-message">

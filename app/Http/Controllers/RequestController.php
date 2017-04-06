@@ -60,6 +60,7 @@ class RequestController extends Controller
     			$time = "Time not sent";
     		}
 
+            //Add the request to the request table
             DB::table('requests')->insert(['start_address' => $address,
                                            'arrival_time' => $time,
                                            'subject' => $subject,
@@ -69,8 +70,32 @@ class RequestController extends Controller
                                            'request_id' => $request_id,
                                            'offer_id' => $offer_id]);
             
+            //Send the user an email to notify them of the request that has been sent
+            //get the recipients email and username
+            $toEmail = DB::table('users')->where('id', '=', $receiver_id)->value('email');
+            $fromEmail = DB::table('users')->where('id', '=', $sender_id)->value('email');
+            $sender = DB::table('users')->where('id', '=', $receiver_id)->value('name');
+            
+            // Subject
+            $subject = 'You have received a request from EZRyderz';
+
+            // In case any of our lines are larger than 70 characters, we should use wordwrap()
+            $message = "You have received a new ride request from ".$sender."! \r\n 
+                        Please go to EZRyderz and log in to view your reqeusts. \r\n 
+                        We hope you haver a great day! - The EZRyderz team";
+            $message = wordwrap($message, 70, "\r\n");
+
+            //Set php.ini to connect to mailserver
+            ini_set( 'sendmail_from', $fromEmail); 
+            ini_set( 'SMTP', $toEmail); 
+            ini_set( 'smtp_port', 25 );
+            
+            //Send
+            //mail($toEmail, "$subject", $message, "From:" . $fromEmail);
+      
             //Ugly inline javascript to give a confirmation alert
             echo "<script type =\"text/javascript\">alert(\"Request successfully sent to user.\")  </script>";
+
             return view('pages.welcome');
     	} else {
     		return view('auth.login'); // if user is not logged in, redirect to login page

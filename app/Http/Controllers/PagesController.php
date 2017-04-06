@@ -59,10 +59,17 @@ class PagesController extends Controller
       return view('pages.search');
     }
 
+
+    public function riderratings()
+    {
+      return view('pages.riderratings');
+    }
+
     public function searchlist()
     {
       return view('pages.searchlist');
     }
+
 
 
 

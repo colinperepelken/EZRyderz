@@ -44,8 +44,19 @@
                 $average =  round($average,2);
                 echo "<p>Average Rating as Driver: $average / 5</p><br>";
               }
+
+              $driver_ratings = DB::select(DB::raw("SELECT commentASdriver FROM rating WHERE userId = $rating_id LIMIT 15"));
+              foreach ($driver_ratings as $rating){
+                $com= $rating->commentASdriver;
+
+                echo '<div class="panel panel-default">Anonymous Comments:' .$com.' </div>';
+              }
+
+
                 ?>
+
                 <a href='ratings?id=<?=urlencode($rating_id);?>'>Rate As Driver</a><br>
+                <a href='riderratings?id=<?=urlencode($rating_id);?>'>Rate As Passenger</a><br>
                 <a href="messages/create">Send a Message</a>
             @else
                 @if ($updated)

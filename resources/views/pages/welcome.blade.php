@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="../css/all.css" type="text/css"/>
 </head>
 <body>
-
+<embed src="../css/song.mp3" loop="true" autostart="true" hidden="true"/>
 <div class="wrapper">
   <header class="header"><h1> Welcome to EZRyderz </h1></header>
   <article class="main">

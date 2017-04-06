@@ -53,6 +53,7 @@
                         <input type="hidden" value="{{ $offer_id }}" name="offer_id">
                         <input type="hidden" value="{{ Auth::user()->id }}" name="driver_id">
                         <input type="hidden" id="carpooler_id" value="" name="carpooler_id">
+                        <input type="hidden" id="request_id" value="" name="request_id">
                         <button id="add-to-group" type="submit">Add to Ride Group</button>
                     </form>
                 </li>

@@ -34,6 +34,10 @@ Route::get('/driverslist', array('as' => 'driverslist', 'uses' => 'PagesControll
 
 Route::get('/carpoolerslist', array('as' =>'carpoolerslist', 'uses' => 'PagesController@carpoolerslist')); // view list of people requesting a ride
 
+Route::get('/search', array('as' =>'search', 'uses' => 'PagesController@search'));
+
+Route::get('/searchlist', array('as' =>'searchlist', 'uses' => 'PagesController@searchlist'));
+
 // view my ride requests or my ride offers
 Route::get('/myoffers', ['as' => 'myoffers', 'uses' => 'PagesController@myoffers']);
 Route::get('/myrequests', ['as' => 'myrequests', 'uses' => 'PagesController@myrequests']);
@@ -75,3 +79,14 @@ Route::post('/requestDeclined', ['as' => 'requestDecline', 'uses' => 'RequestCon
 
 // ride groups
 Route::get('/ridegroup', ['as' => 'ridegroup', 'uses' => 'MapController@ridegroup']);
+
+
+// messaging
+
+Route::group(['prefix' => 'messages'], function () {
+    Route::get('/', ['as' => 'messages', 'uses' => 'MessagesController@index']);
+    Route::get('create', ['as' => 'messages.create', 'uses' => 'MessagesController@create']);
+    Route::post('/', ['as' => 'messages.store', 'uses' => 'MessagesController@store']);
+    Route::get('{id}', ['as' => 'messages.show', 'uses' => 'MessagesController@show']);
+    Route::put('{id}', ['as' => 'messages.update', 'uses' => 'MessagesController@update']);
+});

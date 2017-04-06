@@ -42,6 +42,7 @@ function initMap() {
         		position: new google.maps.LatLng(carpooler_info[i]['lat'], carpooler_info[i]['long']),
         		title: "carpooler" + carpooler_info[i]['id'],
                 id: carpooler_info[i]['id'],
+                request: carpooler_info[i]['request_id'],
                 address: carpooler_info[i]['start_address'],
         		label: carpooler_info[i]['username'],
         		map: map
@@ -53,6 +54,7 @@ function initMap() {
                 document.getElementById('profile-link').innerHTML = this.label + "'s Profile";
                 document.getElementById('add-to-group').style.display = "inline";
                 document.getElementById('carpooler_id').value = this.id;
+                document.getElementById('request_id').value = this.request;
 
             });
         }

@@ -18,6 +18,7 @@ class Requests extends Migration
             $table->integer('sender_id'); 
             $table->integer('receiver_id');
             $table->integer('request_id');
+            $table->integer('offer_id');
             $table->longtext('subject');
             $table->longtext('msg');
             $table->longtext('start_address');

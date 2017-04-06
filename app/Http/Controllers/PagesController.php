@@ -49,6 +49,12 @@ class PagesController extends Controller
 
 
 
+    public function riderratings()
+    {
+      return view('pages.riderratings');
+    }
+
+
 
 
 

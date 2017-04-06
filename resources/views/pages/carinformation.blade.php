@@ -93,6 +93,15 @@
                   </div>
                 </div>
               </div>
+              <div class="form-group">
+                <label class="col-md-4 control-label">Allow Smoking? </label>
+                <div class="col-md-6">
+                  <div class="">
+                  <input type = "radio" name = "allowSmoking" value = "yes">Yes
+                  <input type = "radio" name = "allowSmoking" value = "no" checked>No
+                </div>
+              </div>
+            </div>
                 <div class="form-group{{ $errors->has('efficiency') ? ' has-error' : '' }}">
                   <label class="col-md-4 control-label">Fuel Efficiency: </label>
                   <div class="col-md-6">
@@ -106,6 +115,17 @@
                     <select name = "efficiencyUnits">
                       <option value = "mpg">MPG</option>
                       <option value = "L/100">L/100</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-md-4 control-label">Fuel Type: </label>
+                  <div class="col-md-6">
+                    <select class="form-control" name = "fuelType">
+                      <option value = "regular">Regular</option>
+                      <option value = "midgrade">Midgrade</option>
+                      <option value = "premium">Premium</option>
+                      <option value = "diesel">Diesel</option>
                     </select>
                   </div>
                 </div>

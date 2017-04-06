@@ -23,8 +23,10 @@ class CreateCarInformationTable extends Migration
             $table->string('licensePlate')->unique();
             $table->integer('numberOfSeats');
             $table->string('hasAirConditioning');
+            $table->string('allowSmoking');
             $table->integer('efficiency');
             $table->string('efficiencyUnits');
+            $table->string('fuelType');
             //Removed visibility option as every driver's car information should be visible
         });
     }

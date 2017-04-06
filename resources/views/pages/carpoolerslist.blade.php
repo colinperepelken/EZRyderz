@@ -46,7 +46,7 @@
   <form method="get" class="form-horizontal" action="{{ route('compatibledrivers') }}">
     {{ csrf_field() }} <!-- this is needed to post form, do not delete -->
     <div class="form-group">
-      <label class="col-md-4 control-label">Maximum Difference in Arrival Time: </label>
+      <label class="col-md-4 control-label">Maximum Difference in Arrival Times: </label>
       <div class="col-md-6">
         <select class="form-control" name = "minutes">
           <option value = "5">5 minutes</option>
@@ -54,6 +54,18 @@
           <option value = "15">15 minutes</option>
           <option value = "20">20 minutes</option>
           <option value = "25">25 minutes</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-md-4 control-label">Minimum Driver Rating? (5 is highest, 1 is lowest) </label>
+      <div class="col-md-6">
+        <select class="form-control" name = "minRating">
+          <option value = "1">1</option>
+          <option value = "2">2</option>
+          <option value = "3">3</option>
+          <option value = "4">4</option>
+          <option value = "5">5</option>
         </select>
       </div>
     </div>
@@ -66,6 +78,15 @@
       </div>
     </div>
   </div>
+  <div class="form-group">
+    <label class="col-md-4 control-label">Should the Driver's Car Be a Smoking or a Non-Smoking Environment? </label>
+    <div class="col-md-6">
+      <div class="">
+      <input type = "radio" name = "hasSmoking" value = "yes">Smoking
+      <input type = "radio" name = "hasSmoking" value = "no" checked>Non-Smoking
+    </div>
+  </div>
+</div>
     <input type="hidden" name="offer_id" value="<?=$carpooler->request_id;?>"> <!-- this will not work on this page... see driverslist.blade.php -->
     <button class="btn btn-primary" type="submit">Find Drivers for Me!</button>
   </form>

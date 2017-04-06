@@ -34,6 +34,10 @@ Route::get('/driverslist', array('as' => 'driverslist', 'uses' => 'PagesControll
 
 Route::get('/carpoolerslist', array('as' =>'carpoolerslist', 'uses' => 'PagesController@carpoolerslist')); // view list of people requesting a ride
 
+Route::get('/search', array('as' =>'search', 'uses' => 'PagesController@search'));
+
+Route::get('/searchlist', array('as' =>'searchlist', 'uses' => 'PagesController@searchlist'));
+
 // view my ride requests or my ride offers
 Route::get('/myoffers', ['as' => 'myoffers', 'uses' => 'PagesController@myoffers']);
 Route::get('/myrequests', ['as' => 'myrequests', 'uses' => 'PagesController@myrequests']);

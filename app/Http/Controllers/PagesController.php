@@ -42,13 +42,21 @@ class PagesController extends Controller
     {
       return view('pages.viewcarpoolingschedule');
     }
+
     public function ratings()
     {
       return view('pages.ratings');
     }
 
+    public function search()
+    {
+      return view('pages.search');
+    }
 
-
+    public function searchlist()
+    {
+      return view('pages.searchlist');
+    }
 
 
 
@@ -122,7 +130,7 @@ class PagesController extends Controller
 
         $user_id = Auth::user()->id;
 
-        $all_drivers = DB::select(DB::raw("SELECT * FROM users, ride_offers, carinformation WHERE users.id = ride_offers.user_id AND users.id = carinformation.user_id "));
+        $all_drivers = DB::select(DB::raw("SELECT * FROM users, ride_offers, carinformation, rating WHERE users.id = ride_offers.user_id AND users.id = carinformation.user_id AND users.id = rating.userId"));
         return view('pages.compatibledrivers', ['all_drivers' => $all_drivers]);
       }
     }

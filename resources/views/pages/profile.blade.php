@@ -46,6 +46,7 @@
               }
                 ?>
                 <a href='ratings?id=<?=urlencode($rating_id);?>'>Rate As Driver</a><br>
+                <a href="messages/create">Send a Message</a>
             @else
                 @if ($updated)
                     <div id="update success" style="background-color: #66ff66; width: 135px;"> <!-- TODO: make this look nicer... also shouldn't be inline CSS, put in the sheet -->

@@ -57,6 +57,7 @@ class MapController extends Controller
     		// fetch users who made the ride requests
     		$user_id = $ride_request->user_id;
     		$username = DB::table('users')->where('id', $user_id)->first()->name;
+            $request_id = $ride_request->request_id;
 
 
     		array_push($carpooler_info, array(
@@ -64,7 +65,8 @@ class MapController extends Controller
     			'long' => Mapper::location($ride_request->start_address)->getLongitude(),
     			'id' => $user_id,
     			'start_address' => $ride_request->start_address,
-    			'username' => $username
+    			'username' => $username,
+                'request_id' => $request_id
     		));
     	}
 
@@ -88,12 +90,14 @@ class MapController extends Controller
     	$offer_id = $request->offer_id;
     	$driver_id = $request->driver_id;
     	$carpooler_id = $request->carpooler_id;
+        $request_id = $request->request_id;
 
     	DB::table('ride_groups')->insert( // insert into ride group
  	   		[
  	   			'offer_id' => $offer_id,
  	   			'driver_id' => $driver_id,
- 	   			'carpooler_id' => $carpooler_id
+ 	   			'carpooler_id' => $carpooler_id,
+                'request_id' => $request_id
     		]
     	);
 

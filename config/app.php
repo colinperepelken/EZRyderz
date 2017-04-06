@@ -183,6 +183,9 @@ return [
         // google maps added by Colin
         Cornford\Googlmapper\MapperServiceProvider::class,
 
+        // messenger added by Colin
+        Cmgmyr\Messenger\MessengerServiceProvider::class
+
     ],
 
     /*

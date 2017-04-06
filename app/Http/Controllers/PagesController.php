@@ -15,7 +15,13 @@ class PagesController extends Controller
 
     public function welcome()
     {
-    	return view('pages.welcome');
+    	if (Auth::check()) {
+            $id = Auth::user()->id;
+            $hasMsg = DB::table('participants')->where('user_id', '=', $id)->whereNull('last_read')->first();
+            return view('pages.welcome', ['hasMsg' => $hasMsg]);
+        } else {
+            return view('pages.welcome');
+        }
     }
 
     public function login()

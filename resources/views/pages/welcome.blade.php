@@ -27,7 +27,10 @@
   @if (Auth::guest())
     Fun facts about driving?<br> Other random info? <br> Can be kept or removed 
   @else
-    <a href="{{ route('ridegroup') }}">My Ride Groups</a>
+    <a href="{{ route('ridegroup') }}">My Ride Groups</a> <br>
+    @if (count($hasMsg))
+      <a href="{{ route('messages') }}">You have New Messages</a>
+    @endif
   @endif
   </aside>
   <aside class="aside aside-2">

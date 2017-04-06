@@ -3,6 +3,8 @@
 namespace ezryderz\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use DB;
 
 class HomeController extends Controller
 {
@@ -22,7 +24,13 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('home');
+    {   
+        if (Auth::check()) {
+            $id = Auth::user()->id;
+            $hasMsg = DB::table('participants')->where('user_id', $id)->value('last_read');
+            return view('home', ['hasMsg' => $hasMsg]);
+        } else {
+            return view('home');
+        }
     }
 }

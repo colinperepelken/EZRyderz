@@ -20,6 +20,8 @@
               <?php $carpooler_id = $_GET["offer_id"];
               $minutes = $_GET["minutes"];
               $ac = $_GET["hasAirConditioning"];
+              $smoking = $_GET["hasSmoking"];
+              $minRating = $_GET["minRating"];
               $carpoolers = DB::select(DB::raw("SELECT * FROM users, ride_requests WHERE users.id = ride_requests.user_id AND ".$carpooler_id." = users.id"));
               $user = DB::table('ride_requests')->where('request_id', $carpooler_id)->first(); ?>
 
@@ -33,8 +35,8 @@
                 <?php $time_diff = $time_difference->format("%i"); ?>
                 <?php $time_diff2 = $time_difference->format("%H"); ?>
 
-                <?php if ($ac == 'no'): ?>
-                  <?php if ($driver->destination_address == $user->destination_address && $time_diff < $minutes && $time_diff2 == 0): ?>                                                                                        <! logged in user's ride request destination_address>
+                <?php if ($ac == 'no' && $smoking == 'no'): ?>
+                  <?php if ($driver->destination_address == $user->destination_address && $time_diff <= $minutes && $time_diff2 == 0 && $driver->allowSmoking == 'no' && $driver->driverRating >= $minRating): ?>                                                                                        <! logged in user's ride request destination_address>
                   <?php $avatar = $driver->avatar; ?>
                   <?php $id = $driver->user_id; ?>
                   <hr><img src="/uploads/avatars/{{ $avatar }}" style="width:32px; height:32px; position:relative;">
@@ -45,11 +47,13 @@
                   <strong>Destination Address: {{ $driver->destination_address}}</strong></br>
                   <strong>Arrival Time: {{ $driver->arrival_time}}</strong></br>
                   <strong>Has Air Conditioning? {{ $driver->hasAirConditioning}}</strong></br>
+                  <strong>Smoking? {{ $driver->allowSmoking}}</strong></br>
+                  <strong>Driver Rating: {{ $driver->driverRating}}</strong></br>
                   <?php endif ?>
                 <?php endif ?>
 
-                <?php if ($ac == 'yes'): ?>
-                  <?php if ($driver->destination_address == $user->destination_address && $time_diff < $minutes && $time_diff2 == 0 && $driver->hasAirConditioning == 'yes'): ?>                                                                                     <! logged in user's ride request destination_address>
+                <?php if ($ac == 'no' && $smoking == 'yes'): ?>
+                  <?php if ($driver->destination_address == $user->destination_address && $time_diff <= $minutes && $time_diff2 == 0 && $driver->allowSmoking == 'yes' && $driver->driverRating >= $minRating): ?>                                                                                        <! logged in user's ride request destination_address>
                   <?php $avatar = $driver->avatar; ?>
                   <?php $id = $driver->user_id; ?>
                   <hr><img src="/uploads/avatars/{{ $avatar }}" style="width:32px; height:32px; position:relative;">
@@ -60,10 +64,45 @@
                   <strong>Destination Address: {{ $driver->destination_address}}</strong></br>
                   <strong>Arrival Time: {{ $driver->arrival_time}}</strong></br>
                   <strong>Has Air Conditioning? {{ $driver->hasAirConditioning}}</strong></br>
+                  <strong>Smoking? {{ $driver->allowSmoking}}</strong></br>
+                  <strong>Driver Rating: {{ $driver->driverRating}}</strong></br>
+                  <?php endif ?>
+                <?php endif ?>
+
+                <?php if ($ac == 'yes' && $smoking == 'no'): ?>
+                  <?php if ($driver->destination_address == $user->destination_address && $time_diff <= $minutes && $time_diff2 == 0 && $driver->hasAirConditioning == 'yes' && $driver->allowSmoking == 'no' && $driver->driverRating >= $minRating): ?>                                                                                     <! logged in user's ride request destination_address>
+                  <?php $avatar = $driver->avatar; ?>
+                  <?php $id = $driver->user_id; ?>
+                  <hr><img src="/uploads/avatars/{{ $avatar }}" style="width:32px; height:32px; position:relative;">
+                  <strong>{{ $driver->name }}</strong>
+                  <a href="viewdrivingschedule?id=<?=urlencode($driver->user_id);?>"><strong>Schedule</strong></a>
+                  <a href="profile?id=<?=$id?>">Profile</a>
+                  <a href='viewcarinformation?id=<?=urlencode($driver->user_id);?>'><strong>Car Information</strong></a><br>
+                  <strong>Destination Address: {{ $driver->destination_address}}</strong></br>
+                  <strong>Arrival Time: {{ $driver->arrival_time}}</strong></br>
+                  <strong>Has Air Conditioning? {{ $driver->hasAirConditioning}}</strong></br>
+                  <strong>Smoking? {{ $driver->allowSmoking}}</strong></br>
+                  <strong>Driver Rating: {{ $driver->driverRating}}</strong></br>
+                  <?php endif ?>
+                <?php endif ?>
+
+                <?php if ($ac == 'yes' && $smoking == 'yes'): ?>
+                  <?php if ($driver->destination_address == $user->destination_address && $time_diff <= $minutes && $time_diff2 == 0 && $driver->hasAirConditioning == 'yes' && $driver->allowSmoking == 'yes' && $driver->driverRating >= $minRating): ?>                                                                                     <! logged in user's ride request destination_address>
+                  <?php $avatar = $driver->avatar; ?>
+                  <?php $id = $driver->user_id; ?>
+                  <hr><img src="/uploads/avatars/{{ $avatar }}" style="width:32px; height:32px; position:relative;">
+                  <strong>{{ $driver->name }}</strong>
+                  <a href="viewdrivingschedule?id=<?=urlencode($driver->user_id);?>"><strong>Schedule</strong></a>
+                  <a href="profile?id=<?=$id?>">Profile</a>
+                  <a href='viewcarinformation?id=<?=urlencode($driver->user_id);?>'><strong>Car Information</strong></a><br>
+                  <strong>Destination Address: {{ $driver->destination_address}}</strong></br>
+                  <strong>Arrival Time: {{ $driver->arrival_time}}</strong></br>
+                  <strong>Has Air Conditioning? {{ $driver->hasAirConditioning}}</strong></br>
+                  <strong>Smoking? {{ $driver->allowSmoking}}</strong></br>
+                  <strong>Driver Rating: {{ $driver->driverRating}}</strong></br>
                   <?php endif ?>
                 <?php endif ?>
                 <?php endforeach ?>
-
 
           </div>
         </div>

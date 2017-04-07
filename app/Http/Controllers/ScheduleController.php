@@ -49,8 +49,9 @@ class ScheduleController extends Controller
             	);
 
     		}
-
-    		return view('pages.welcome'); // after insert, redirect user
+            $id = Auth::user()->id;
+            $hasMsg = DB::table('participants')->where('user_id', '=', $id)->whereNull('last_read')->first();
+            return view('pages.welcome', ['hasMsg' => $hasMsg]);
 
     	} else {
     		return view('auth.login'); // if user is not logged in, redirect to login page

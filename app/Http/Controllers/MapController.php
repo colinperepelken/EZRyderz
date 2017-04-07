@@ -101,7 +101,9 @@ class MapController extends Controller
     		]
     	);
 
-    	return view('pages.welcome');
+    	 $id = Auth::user()->id;
+            $hasMsg = DB::table('participants')->where('user_id', '=', $id)->whereNull('last_read')->first();
+            return view('pages.welcome', ['hasMsg' => $hasMsg]);
     }
 
     /*
@@ -111,7 +113,9 @@ class MapController extends Controller
     	$offer_id = $request->offer_id;
 
     	DB::table('ride_offers')->where('offer_id', $offer_id)->delete(); // delete from DB
-    	return view('pages.welcome'); // re direct to home after delete
+    	 $id = Auth::user()->id;
+            $hasMsg = DB::table('participants')->where('user_id', '=', $id)->whereNull('last_read')->first();
+            return view('pages.welcome', ['hasMsg' => $hasMsg]);
     }
 
     /*

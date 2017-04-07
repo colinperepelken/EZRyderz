@@ -25,12 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {   
-        if (Auth::check()) {
-            $id = Auth::user()->id;
-            $hasMsg = DB::table('participants')->where('user_id', $id)->value('last_read');
-            return view('home', ['hasMsg' => $hasMsg]);
-        } else {
-            return view('home');
-        }
+        return view('home');
+
     }
 }

@@ -18,7 +18,9 @@ class RatingController extends Controller{
 
       /*Should return to a different view after data has successfully been inserted. This is
       just for now.*/
-      return view('pages.welcome');
+      $id = Auth::user()->id;
+      $hasMsg = DB::table('participants')->where('user_id', '=', $id)->whereNull('last_read')->first();
+      return view('pages.welcome', ['hasMsg' => $hasMsg]);
     }
 }
 

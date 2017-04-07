@@ -96,7 +96,9 @@ class RequestController extends Controller
             //Ugly inline javascript to give a confirmation alert
             echo "<script type =\"text/javascript\">alert(\"Request successfully sent to user.\")  </script>";
 
-            return view('pages.welcome');
+             $id = Auth::user()->id;
+            $hasMsg = DB::table('participants')->where('user_id', '=', $id)->whereNull('last_read')->first();
+            return view('pages.welcome', ['hasMsg' => $hasMsg]);
     	} else {
     		return view('auth.login'); // if user is not logged in, redirect to login page
     	}
@@ -144,7 +146,9 @@ class RequestController extends Controller
         );
 
 
-        return view('pages.welcome');
+         $id = Auth::user()->id;
+            $hasMsg = DB::table('participants')->where('user_id', '=', $id)->whereNull('last_read')->first();
+            return view('pages.welcome', ['hasMsg' => $hasMsg]);
         $request_id = $request->id;
 
         DB::table('requests')->where('id', '=', $request_id)->delete(); // delete from DB

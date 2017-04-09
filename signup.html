@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+   <meta charset="utf-8">
+   <title>Easy RiderZ Signup</title>
+</head>
+<body>
+<header id="masthead">
+<h1>Signup Page</h1>
+</header>
+
+<link rel="stylesheet" href="css/signup.css" />
+<div id="container_demo" >
+	<a class="hiddenanchor" id="toregister"></a>
+	<a class="hiddenanchor" id="tologin"></a>
+	<div id="wrapper">
+
+		<div id="register" class="animate form">
+			<form  action='http://www.randyconnolly.com/tests/process.php' method='post' id='loginForm'>
+				<p>
+					<label for="usernamesignup" class="uname" data-icon="u">Your username</label>
+					<input id="usernamesignup" name="usernamesignup" required="required" type="text" placeholder="usename" />
+				</p>
+				<p>
+					<label for="emailsignup" class="youmail" data-icon="e" > Your email</label>
+					<input id="emailsignup" name="emailsignup" required="required" type="email" placeholder="username@mail.com"/>
+				</p>
+				<p>
+					<label for="passwordsignup" class="youpasswd" data-icon="p">Your password </label>
+					<input id="passwordsignup" name="passwordsignup" required="required" type="password" placeholder="X8df!90EO"/>
+				</p>
+				<p>
+					<label for="passwordsignup_confirm" class="youpasswd" data-icon="p">Please confirm your password </label>
+					<input id="passwordsignup_confirm" name="passwordsignup_confirm" required="required" type="password" placeholder="eg. X8df!90EO"/>
+				</p>
+				<p class="signin button">
+					<input type="submit" value="Sign up"/>
+				</p>
+				<p class="change_link">
+					Already a member ?
+					<a href="#tologin" class="to_register"> Go and log in </a>
+				</p>
+			</form>
+		</div>
+
+	</div>
+</div>
+</body>
+</html>
